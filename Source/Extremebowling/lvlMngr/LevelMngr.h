@@ -29,6 +29,17 @@ public:
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
 		TSubclassOf<class AActor> Base_Track;
 
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+		TSubclassOf<class AActor> B_obs_1;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+		TSubclassOf<class AActor> B_obs_2;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+		TSubclassOf<class AActor> B_obs_3;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+		TSubclassOf<class AActor> B_obs_4;
 
 protected:
 	// Called when the game starts or when spawned

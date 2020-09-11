@@ -59,7 +59,7 @@ void AmainChar::Tick(float DeltaTime)
 	
 
 	if (!brakeOn) {
-		sphere->AddAngularImpulse(FVector(0, 100 * DeltaTime, 0), NAME_None, true);
+		sphere->AddAngularImpulseInDegrees(FVector(0, 3000 * DeltaTime, 0), NAME_None, true);
 	}
 
 
@@ -97,9 +97,10 @@ void AmainChar::brake_F(float val) {
 		brakeOn = true;
 		FVector currV = GetVelocity();
 
-		currV.X *= -1;
-		currV.Y *= -1;
+		currV.X *= -2;
+		currV.Y *= -2;
 		
+		//sphere->AddAngularImpulseInDegrees(currV);
 		sphere->AddForce(currV, NAME_None, true);
 	}
 }
