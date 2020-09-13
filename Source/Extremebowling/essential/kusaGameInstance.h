@@ -22,5 +22,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "kusaVar")
 		int WheelIdx = 0;
 
+
 	
 };

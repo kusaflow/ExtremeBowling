@@ -27,19 +27,39 @@ public:
 
 	//kusaMesh-------------------------------------------------
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
-		TSubclassOf<class AActor> Base_Track;
+		TSubclassOf<class AActor> L1_Base_Track;
 
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
-		TSubclassOf<class AActor> B_obs_1;
+		TSubclassOf<class AActor> L1_B_1;
 
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
-		TSubclassOf<class AActor> B_obs_2;
+		TSubclassOf<class AActor> L1_B_2;
 
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
-		TSubclassOf<class AActor> B_obs_3;
+		TSubclassOf<class AActor> L1_B_3;
 
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
-		TSubclassOf<class AActor> B_obs_4;
+		TSubclassOf<class AActor> L1_B_4;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+		TSubclassOf<class AActor> L1_B_5;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+		TSubclassOf<class AActor> L1_B_6;
+	
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+		TSubclassOf<class AActor> L1_B_7;
+
+
+	//powerUp
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Power")
+		TSubclassOf<class AActor> P_speedUp;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Power")
+		TSubclassOf<class AActor> P_slowDown;
+
+
+
 
 protected:
 	// Called when the game starts or when spawned

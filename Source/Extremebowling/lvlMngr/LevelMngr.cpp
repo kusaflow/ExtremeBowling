@@ -40,9 +40,9 @@ void ALevelMngr::Tick(float DeltaTime)
 void ALevelMngr::initBlocks() {
 
 	init_block = true;
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < 20; i++) {
 		CreateLevelBlock();
-		if (i == 2) {
+		if (i == 9) {
 			next_Milestone = xpos;
 
 		}if (i == 5) {
@@ -100,41 +100,81 @@ void ALevelMngr::CreateLevelBlock() {
 	int wToSelect = 10;
 
 	if (!hasNext) {
-		wToSelect = (int)FMath::FRandRange(1, 10);
+		wToSelect = (int)FMath::FRandRange(1, 20);
 	}
 	hasNext = false;
 
 	if (start)
 		wToSelect = 10;
 
+	//powerUp
+	if ((int)(FMath::FRandRange(1, 100)) % 5 == 0) {
+		int powerUp = (int)(FMath::FRandRange(1, 5));
+		int yLocPower = FMath::FRandRange(-1800, 1800);
+		if (powerUp == 1 && P_speedUp) {
+			AActor* power = world->SpawnActor<AActor>(P_speedUp, FVector(xpos + 500, yLocPower, 1300), FRotator(0), spawnPara);
+			blocks.Push(power);
+		}
+		else if (powerUp == 2 && P_slowDown) {
+			AActor* power = world->SpawnActor<AActor>(P_slowDown, FVector(xpos + 500, yLocPower, 1300), FRotator(0), spawnPara);
+			blocks.Push(power);
+		}
+
+
+	}
+
 	if (wToSelect == 1) {
 		next_Milestone += 1000;
-		if (B_obs_1) {
-			AActor* floor = world->SpawnActor<AActor>(B_obs_1, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+		if (L1_B_1) {
+			AActor* floor = world->SpawnActor<AActor>(L1_B_1, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
 			blocks.Push(floor);
 		}
 		xpos += 1000;
 	}
 	else if (wToSelect == 2) {
 		next_Milestone += 1000;
-		if (B_obs_2) {
-			AActor* floor = world->SpawnActor<AActor>(B_obs_2, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+		if (L1_B_2) {
+			AActor* floor = world->SpawnActor<AActor>(L1_B_2, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
 			blocks.Push(floor);
 		}
 		xpos += 1000;
 	}
 	else if (wToSelect == 3) {
 		next_Milestone += 1000;
-		if (B_obs_3) {
-			AActor* floor = world->SpawnActor<AActor>(B_obs_3, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+		if (L1_B_3) {
+			AActor* floor = world->SpawnActor<AActor>(L1_B_3, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
 			blocks.Push(floor);
 		}
 		xpos += 1000;
 	}
 	else if (wToSelect == 4) {
 		next_Milestone += 1000;
-		if (B_obs_4) {
-			AActor* floor = world->SpawnActor<AActor>(B_obs_4, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+		if (L1_B_4) {
+			AActor* floor = world->SpawnActor<AActor>(L1_B_4, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+			blocks.Push(floor);
+		}
+		xpos += 1000;
+	}
+	else if (wToSelect == 5) {
+		next_Milestone += 1000;
+		if (L1_B_5) {
+			AActor* floor = world->SpawnActor<AActor>(L1_B_5, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+			blocks.Push(floor);
+		}
+		xpos += 1000;
+	}
+	else if (wToSelect == 6) {
+		next_Milestone += 1000;
+		if (L1_B_6) {
+			AActor* floor = world->SpawnActor<AActor>(L1_B_6, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+			blocks.Push(floor);
+		}
+		xpos += 1000;
+	}
+	else if (wToSelect == 7) {
+		next_Milestone += 1000;
+		if (L1_B_7) {
+			AActor* floor = world->SpawnActor<AActor>(L1_B_7, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
 			blocks.Push(floor);
 		}
 		xpos += 1000;
@@ -142,8 +182,8 @@ void ALevelMngr::CreateLevelBlock() {
 	///--------------------------------------------------------------------
 	else {
 		next_Milestone += 1000;
-		if (Base_Track) {
-			AActor* floor = world->SpawnActor<AActor>(Base_Track, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+		if (L1_Base_Track) {
+			AActor* floor = world->SpawnActor<AActor>(L1_Base_Track, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
 			blocks.Push(floor);
 		}
 		xpos += 1000;
