@@ -50,6 +50,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
 		TSubclassOf<class AActor> L1_B_7;
 
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+		TSubclassOf<class Ablock_9> satuM;
+
 
 	//powerUp
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Power")

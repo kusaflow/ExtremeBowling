@@ -3,6 +3,7 @@
 
 #include "LevelMngr.h"
 #include "../essential/kusaGameInstance.h"
+#include "../Basic_Lvl/block_9.h"
 
 // Sets default values
 ALevelMngr::ALevelMngr()
@@ -97,10 +98,12 @@ void ALevelMngr::CreateLevelBlock() {
 
 	int y_sz = 10;
 
-	int wToSelect = 10;
+	int wToSelect = 300;
+
+	//saturation from Bevel To straight starts from 300
 
 	if (!hasNext) {
-		wToSelect = (int)FMath::FRandRange(1, 20);
+		//wToSelect = (int)FMath::FRandRange(1, 20);
 	}
 	hasNext = false;
 
@@ -175,6 +178,16 @@ void ALevelMngr::CreateLevelBlock() {
 		next_Milestone += 1000;
 		if (L1_B_7) {
 			AActor* floor = world->SpawnActor<AActor>(L1_B_7, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+			blocks.Push(floor);
+		}
+		xpos += 1000;
+	}
+	///---------------------------------------------------------------------------------------
+	else if (wToSelect == 300) {
+		next_Milestone += 1000;
+		if (satuM) {
+			Ablock_9* floor = world->SpawnActor<Ablock_9>(satuM, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+			floor->reArrange(1, xpos + 500);
 			blocks.Push(floor);
 		}
 		xpos += 1000;
