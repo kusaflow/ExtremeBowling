@@ -24,6 +24,13 @@ public:
 
 	bool start = true, init_block = true, hasNext = false;
 
+	int Sat = 1;
+	bool isCurvedPlatform = true;
+
+
+	int wToSelect = 400;
+
+
 
 	//kusaMesh-------------------------------------------------
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
@@ -53,6 +60,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
 		TSubclassOf<class Ablock_9> satuM;
 
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+		TSubclassOf<class AActor> plane;
 
 	//powerUp
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Power")

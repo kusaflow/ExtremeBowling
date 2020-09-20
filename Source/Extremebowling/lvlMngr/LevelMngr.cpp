@@ -98,17 +98,22 @@ void ALevelMngr::CreateLevelBlock() {
 
 	int y_sz = 10;
 
-	int wToSelect = 300;
+	//saturation from Bevel To straight is 300
+	//saturation from straight to Bevel is 301
 
-	//saturation from Bevel To straight starts from 300
+	//bowling from staright path and covers starts from 400
+
+
+
 
 	if (!hasNext) {
 		//wToSelect = (int)FMath::FRandRange(1, 20);
+		wToSelect = 400;
 	}
 	hasNext = false;
 
 	if (start)
-		wToSelect = 10;
+		wToSelect = -10;
 
 	//powerUp
 	if ((int)(FMath::FRandRange(1, 100)) % 5 == 0) {
@@ -182,21 +187,53 @@ void ALevelMngr::CreateLevelBlock() {
 		}
 		xpos += 1000;
 	}
-	///---------------------------------------------------------------------------------------
+	///----------------------Saturation-----------------------------------------------------------------
 	else if (wToSelect == 300) {
+		if (Sat >= 10)
+			Sat = 10;
+
 		next_Milestone += 1000;
 		if (satuM) {
 			Ablock_9* floor = world->SpawnActor<Ablock_9>(satuM, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
-			floor->reArrange(1, xpos + 500);
+			floor->reArrange(Sat++, xpos + 500);
 			blocks.Push(floor);
 		}
 		xpos += 1000;
 	}
+	else if (wToSelect == 301) {
+		if (Sat < 0)
+			Sat = 0;
+
+		next_Milestone += 1000;
+		if (satuM) {
+			Ablock_9* floor = world->SpawnActor<Ablock_9>(satuM, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+			floor->reArrange(Sat--, xpos + 500);
+			blocks.Push(floor);
+		}
+		xpos += 1000;
+	}
+	//=========saturatio end ====================================================================================
+	//400-------------------------------------------------------------------------------------------
+	else if (wToSelect == 400) {
+		hasNext = true;
+		wToSelect = 401;
+		next_Milestone += 10*200;
+		if (plane) {
+			AActor* floor = world->SpawnActor<AActor>(plane, FVector(xpos + 
+				((10*200)/2), 0, 0), FRotator(0), spawnPara);
+			floor->SetActorScale3D(FVector(10,27,1));
+			blocks.Push(floor);
+		}
+		xpos += 27*200;
+
+	}
+	//400 ens=================================================================================
 	///--------------------------------------------------------------------
 	else {
 		next_Milestone += 1000;
-		if (L1_Base_Track) {
-			AActor* floor = world->SpawnActor<AActor>(L1_Base_Track, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+		if (satuM) {
+			Ablock_9* floor = world->SpawnActor<Ablock_9>(satuM, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+			floor->reArrange(10, xpos + 500);
 			blocks.Push(floor);
 		}
 		xpos += 1000;

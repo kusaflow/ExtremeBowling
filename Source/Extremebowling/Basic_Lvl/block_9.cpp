@@ -57,176 +57,273 @@ void Ablock_9::Tick(float DeltaTime)
 
 }
 void Ablock_9::reArrange(int trans, float Xpos) {
+	mesh1->SetRelativeLocation(FVector(Xpos, 0, 20));
+	mesh1->SetRelativeRotation(FRotator(0));
+
 	if (trans == 1) {
-		mesh1->SetRelativeLocation(FVector(Xpos, 0, 20));
-		mesh1->SetRelativeRotation(FRotator(0));
+		mesh2->SetRelativeLocation(FVector(Xpos, -587.844421, 68.936539));
+		mesh2->SetRelativeRotation(FRotator(0, 0, 9));
 
-		mesh2->SetRelativeLocation(FVector(Xpos,587.844421,48.936539));
-		mesh2->SetRelativeRotation(FRotator(0, 0, -10));
+		mesh3->SetRelativeLocation(FVector(Xpos, -1156.776978, 233.632263));
+		mesh3->SetRelativeRotation(FRotator(0, 0, 22.5));
 
-		mesh3->SetRelativeLocation(FVector(Xpos, 1148.723999, 231.934143));
-		mesh3->SetRelativeRotation(FRotator(0, 0, -25));
+		mesh4->SetRelativeLocation(FVector(Xpos, -1669.941895, 531.534241));
+		mesh4->SetRelativeRotation(FRotator(0, 0, 36));
 
-		mesh4->SetRelativeLocation(FVector(Xpos,1642.204468,552.957947));
-		mesh4->SetRelativeRotation(FRotator(0, 0, -40));
-
-		mesh5->SetRelativeLocation(FVector(Xpos,2009.443726,1007.155518));
-		mesh5->SetRelativeRotation(FRotator(0, 0, -60));
+		mesh5->SetRelativeLocation(FVector(Xpos, -2086.937256, 952.364014));
+		mesh5->SetRelativeRotation(FRotator(0, 0, 54));
 		///================================================================================================
-		mesh6->SetRelativeLocation(FVector(Xpos, -587.844421, 48.936539));
-		mesh6->SetRelativeRotation(FRotator(0, 0, 10));
+		mesh6->SetRelativeLocation(FVector(Xpos, 587.844421, 68.936539));
+		mesh6->SetRelativeRotation(FRotator(0, 0, -9));
 
-		mesh7->SetRelativeLocation(FVector(Xpos, -1148.723999, 231.934143));
-		mesh7->SetRelativeRotation(FRotator(0, 0, 25));
+		mesh7->SetRelativeLocation(FVector(Xpos, 1156.776978, 233.632263));
+		mesh7->SetRelativeRotation(FRotator(0, 0, -22.5));
 
-		mesh8->SetRelativeLocation(FVector(Xpos, -1642.204468, 552.957947));
-		mesh8->SetRelativeRotation(FRotator(0, 0, 40));
+		mesh8->SetRelativeLocation(FVector(Xpos, 1669.941895, 531.534241));
+		mesh8->SetRelativeRotation(FRotator(0, 0, -36));
 
-		mesh9->SetRelativeLocation(FVector(Xpos, -2009.443726, 1007.155518));
-		mesh9->SetRelativeRotation(FRotator(0, 0, 60));
-
+		mesh9->SetRelativeLocation(FVector(Xpos, 2086.937256, 952.364014));
+		mesh9->SetRelativeRotation(FRotator(0, 0, -54));
 	}
-
 	else if (trans == 2) {
-		mesh1->SetRelativeLocation(FVector(Xpos, 0, 20));
-		mesh1->SetRelativeRotation(FRotator(0));
+		mesh2->SetRelativeLocation(FVector(Xpos, -587.844421, 68.936539));
+		mesh2->SetRelativeRotation(FRotator(0, 0, 8));
 
-		mesh2->SetRelativeLocation(FVector(Xpos, 587.844421, 48.936539));
-		mesh2->SetRelativeRotation(FRotator(0, 0, -10));
+		mesh3->SetRelativeLocation(FVector(Xpos, -1163.61731, 214.838409));
+		mesh3->SetRelativeRotation(FRotator(0, 0, 20));
 
-		mesh3->SetRelativeLocation(FVector(Xpos, 1156.370361, 213.474136));
-		mesh3->SetRelativeRotation(FRotator(0, 0, -20));
+		mesh4->SetRelativeLocation(FVector(Xpos, -1701.737061, 480.651428));
+		mesh4->SetRelativeRotation(FRotator(0, 0, 32));
 
-		mesh4->SetRelativeLocation(FVector(Xpos, 1691.430664, 465.952454));
-		mesh4->SetRelativeRotation(FRotator(0, 0, -30));
-
-		mesh5->SetRelativeLocation(FVector(Xpos, 2131.88208, 833.232727));
-		mesh5->SetRelativeRotation(FRotator(0, 0, -50));
+		mesh5->SetRelativeLocation(FVector(Xpos, -2155.299805, 863.896973));
+		mesh5->SetRelativeRotation(FRotator(0, 0, 48));
 		///================================================================================================
-		mesh6->SetRelativeLocation(FVector(Xpos, -587.844421, 48.936539));
-		mesh6->SetRelativeRotation(FRotator(0, 0, 10));
+		mesh6->SetRelativeLocation(FVector(Xpos, 587.844421, 68.936539));
+		mesh6->SetRelativeRotation(FRotator(0, 0, -8));
 
-		mesh7->SetRelativeLocation(FVector(Xpos, -1156.370361, 213.474136));
-		mesh7->SetRelativeRotation(FRotator(0, 0, 20));
+		mesh7->SetRelativeLocation(FVector(Xpos, 1163.61731, 214.838409));
+		mesh7->SetRelativeRotation(FRotator(0, 0, -20));
 
-		mesh8->SetRelativeLocation(FVector(Xpos, -1691.430664, 465.952454));
-		mesh8->SetRelativeRotation(FRotator(0, 0, 30));
+		mesh8->SetRelativeLocation(FVector(Xpos, 1701.737061, 480.651428));
+		mesh8->SetRelativeRotation(FRotator(0, 0, -32));
 
-		mesh9->SetRelativeLocation(FVector(Xpos, -2131.88208, 833.232727));
-		mesh9->SetRelativeRotation(FRotator(0, 0, 50));
+		mesh9->SetRelativeLocation(FVector(Xpos, 2155.299805, 863.896973));
+		mesh9->SetRelativeRotation(FRotator(0, 0, -48));
 	}
 	else if (trans == 3) {
-		mesh1->SetRelativeLocation(FVector(Xpos, 0, 20));
-		mesh1->SetRelativeRotation(FRotator(0));
+		mesh2->SetRelativeLocation(FVector(Xpos, -589.06311, 59.011078));
+		mesh2->SetRelativeRotation(FRotator(0, 0, 7));
 
-		mesh1->SetRelativeLocation(FVector(Xpos, 587.844421, 48.936539));
-		mesh1->SetRelativeRotation(FRotator(0, 0, 8));
+		mesh3->SetRelativeLocation(FVector(Xpos, -1169.63147, 195.764069));
+		mesh3->SetRelativeRotation(FRotator(0, 0, 17.5));
 
-		mesh2->SetRelativeLocation(FVector(Xpos, 1166.7229, 174.837112));
-		mesh2->SetRelativeRotation(FRotator(0, 0, 15));
+		mesh4->SetRelativeLocation(FVector(Xpos, -1707.551636, 427.114655));
+		mesh4->SetRelativeRotation(FRotator(0, 0, 28));
 
-		mesh3->SetRelativeLocation(FVector(Xpos, 1729.05249, 362.586426));
-		mesh3->SetRelativeRotation(FRotator(0, 0, 20));
-
-		mesh4->SetRelativeLocation(FVector(Xpos, 2247.421143, 633.356018));
-		mesh4->SetRelativeRotation(FRotator(0, 0, 35));
+		mesh5->SetRelativeLocation(FVector(Xpos, -2193.228271, 776.940002));
+		mesh5->SetRelativeRotation(FRotator(0, 0, 42));
 		///================================================================================================
-		mesh6->SetRelativeLocation(FVector(Xpos, -587.844421, 48.936539));
-		mesh6->SetRelativeRotation(FRotator(0, 0, 8));
+		mesh6->SetRelativeLocation(FVector(Xpos, 589.06311, 59.011078));
+		mesh6->SetRelativeRotation(FRotator(0, 0, -7));
 
-		mesh7->SetRelativeLocation(FVector(Xpos, -1166.7229, 174.837112));
-		mesh7->SetRelativeRotation(FRotator(0, 0, 15));
+		mesh7->SetRelativeLocation(FVector(Xpos, 1169.63147, 195.764069));
+		mesh7->SetRelativeRotation(FRotator(0, 0, -17.5));
 
-		mesh8->SetRelativeLocation(FVector(Xpos, -1729.05249, 362.586426));
-		mesh8->SetRelativeRotation(FRotator(0, 0, 20));
+		mesh8->SetRelativeLocation(FVector(Xpos, 1707.551636, 427.114655));
+		mesh8->SetRelativeRotation(FRotator(0, 0, -28));
 
-		mesh9->SetRelativeLocation(FVector(Xpos, -2247.421143, 633.356018));
-		mesh9->SetRelativeRotation(FRotator(0, 0, 35));
+		mesh9->SetRelativeLocation(FVector(Xpos, 2193.228271, 776.940002));
+		mesh9->SetRelativeRotation(FRotator(0, 0, -42));
 	}
 	else if (trans == 4) {
-		mesh1->SetRelativeLocation(FVector(Xpos, 0, 20));
-		mesh1->SetRelativeRotation(FRotator(0));
+		mesh2->SetRelativeLocation(FVector(Xpos, -589.06311, 59.011078));
+		mesh2->SetRelativeRotation(FRotator(0, 0, 6));
 
-		mesh1->SetRelativeLocation(FVector(Xpos, 587.844421, 48.936539));
-		mesh1->SetRelativeRotation(FRotator(0, 0, 8));
+		mesh3->SetRelativeLocation(FVector(Xpos, -1165.148438, 173.857361));
+		mesh3->SetRelativeRotation(FRotator(0, 0, 15));
 
-		mesh2->SetRelativeLocation(FVector(Xpos, 1166.7229, 174.837112));
-		mesh2->SetRelativeRotation(FRotator(0, 0, 15));
+		mesh4->SetRelativeLocation(FVector(Xpos, -1727.88855, 381.437317));
+		mesh4->SetRelativeRotation(FRotator(0, 0, 24));
 
-		mesh3->SetRelativeLocation(FVector(Xpos, 1729.05249, 362.586426));
-		mesh3->SetRelativeRotation(FRotator(0, 0, 20));
-
-		mesh4->SetRelativeLocation(FVector(Xpos, 2247.421143, 633.356018));
-		mesh4->SetRelativeRotation(FRotator(0, 0, 35));
+		mesh5->SetRelativeLocation(FVector(Xpos, -2235.827393, 684.282776));
+		mesh5->SetRelativeRotation(FRotator(0, 0, 36));
 		///================================================================================================
-		mesh6->SetRelativeLocation(FVector(Xpos, -589.587585, 29.012642));
-		mesh6->SetRelativeRotation(FRotator(0, 0, 5));
+		mesh6->SetRelativeLocation(FVector(Xpos, 589.06311, 59.011078));
+		mesh6->SetRelativeRotation(FRotator(0, 0, -6));
 
-		mesh7->SetRelativeLocation(FVector(Xpos, -1177.141602, 115.748611));
-		mesh7->SetRelativeRotation(FRotator(0, 0, 10));
+		mesh7->SetRelativeLocation(FVector(Xpos, 1165.148438, 173.857361));
+		mesh7->SetRelativeRotation(FRotator(0, 0, -15));
 
-		mesh8->SetRelativeLocation(FVector(Xpos, -1760.110229, 246.675201));
-		mesh8->SetRelativeRotation(FRotator(0, 0, 15));
+		mesh8->SetRelativeLocation(FVector(Xpos, 1727.88855, 381.437317));
+		mesh8->SetRelativeRotation(FRotator(0, 0, -24));
 
-		mesh9->SetRelativeLocation(FVector(Xpos, -2319.244629, 436.020844));
-		mesh9->SetRelativeRotation(FRotator(0, 0, 20));
+		mesh9->SetRelativeLocation(FVector(Xpos, 2235.827393, 684.282776));
+		mesh9->SetRelativeRotation(FRotator(0, 0, -36));
 	}
 	else if (trans == 5) {
-		mesh1->SetRelativeLocation(FVector(Xpos, 0, 20));
-		mesh1->SetRelativeRotation(FRotator(0));
+		mesh2->SetRelativeLocation(FVector(Xpos, -589.06311, 55.0));
+		mesh2->SetRelativeRotation(FRotator(0, 0, 5));
 
-		mesh1->SetRelativeLocation(FVector(Xpos, 587.844421, 48.936539));
-		mesh1->SetRelativeRotation(FRotator(0, 0, 8));
+		mesh3->SetRelativeLocation(FVector(Xpos, -1169.477295, 154.331451));
+		mesh3->SetRelativeRotation(FRotator(0, 0, 12.5));
 
-		mesh2->SetRelativeLocation(FVector(Xpos, 1166.7229, 174.837112));
-		mesh2->SetRelativeRotation(FRotator(0, 0, 15));
+		mesh4->SetRelativeLocation(FVector(Xpos, -1735.592407, 331.032562));
+		mesh4->SetRelativeRotation(FRotator(0, 0, 20));
 
-		mesh3->SetRelativeLocation(FVector(Xpos, 1729.05249, 362.586426));
-		mesh3->SetRelativeRotation(FRotator(0, 0, 20));
-
-		mesh4->SetRelativeLocation(FVector(Xpos, 2247.421143, 633.356018));
-		mesh4->SetRelativeRotation(FRotator(0, 0, 35));
+		mesh5->SetRelativeLocation(FVector(Xpos, -2268.50708, 587.679993));
+		mesh5->SetRelativeRotation(FRotator(0, 0, 30));
 		///================================================================================================
-		mesh6->SetRelativeLocation(FVector(Xpos, -589.936584, 19.018734));
-		mesh6->SetRelativeRotation(FRotator(0, 0, 2));
+		mesh6->SetRelativeLocation(FVector(Xpos, 589.06311, 55.0));
+		mesh6->SetRelativeRotation(FRotator(0, 0, -5));
 
-		mesh7->SetRelativeLocation(FVector(Xpos, -1183.759766, 56.122879));
-		mesh7->SetRelativeRotation(FRotator(0, 0, 5));
+		mesh7->SetRelativeLocation(FVector(Xpos, 1169.477295, 154.331451));
+		mesh7->SetRelativeRotation(FRotator(0, 0, -12.5));
 
-		mesh8->SetRelativeLocation(FVector(Xpos, -1771.26355, 127.204834));
-		mesh8->SetRelativeRotation(FRotator(0, 0, 7));
+		mesh8->SetRelativeLocation(FVector(Xpos, 1735.592407, 331.032562));
+		mesh8->SetRelativeRotation(FRotator(0, 0, -20));
 
-		mesh9->SetRelativeLocation(FVector(Xpos, -2357.44873, 219.363007));
-		mesh9->SetRelativeRotation(FRotator(0, 0, 10));
+		mesh9->SetRelativeLocation(FVector(Xpos, 2268.50708, 587.679993));
+		mesh9->SetRelativeRotation(FRotator(0, 0, -30));
 	}
 	else if (trans == 6) {
-		mesh1->SetRelativeLocation(FVector(Xpos, 0, 20));
-		mesh1->SetRelativeRotation(FRotator(0));
+		mesh2->SetRelativeLocation(FVector(Xpos, -589.760681, 45.024361));
+		mesh2->SetRelativeRotation(FRotator(0, 0, 4));
 
-		mesh1->SetRelativeLocation(FVector(Xpos, 600, 0));
-		mesh1->SetRelativeRotation(FRotator(0, 0, 0));
+		mesh3->SetRelativeLocation(FVector(Xpos, -1174.686646, 124.787209));
+		mesh3->SetRelativeRotation(FRotator(0, 0, 10));
 
-		mesh2->SetRelativeLocation(FVector(Xpos, 1200, 0));
+		mesh4->SetRelativeLocation(FVector(Xpos, -1752.130493, 273.356903));
+		mesh4->SetRelativeRotation(FRotator(0, 0, 16));
+
+		mesh5->SetRelativeLocation(FVector(Xpos, -2313.248291, 487.190094));
+		mesh5->SetRelativeRotation(FRotator(0, 0, 24));
+		///================================================================================================
+		mesh6->SetRelativeLocation(FVector(Xpos, 589.760681, 45.024361));
+		mesh6->SetRelativeRotation(FRotator(0, 0, -4));
+
+		mesh7->SetRelativeLocation(FVector(Xpos, 1174.686646, 124.787209));
+		mesh7->SetRelativeRotation(FRotator(0, 0, -10));
+
+		mesh8->SetRelativeLocation(FVector(Xpos, 1752.130493, 273.356903));
+		mesh8->SetRelativeRotation(FRotator(0, 0, -16));
+
+		mesh9->SetRelativeLocation(FVector(Xpos, 2313.248291, 487.190094));
+		mesh9->SetRelativeRotation(FRotator(0, 0, -24));
+	}
+	else if (trans == 7) {
+		mesh2->SetRelativeLocation(FVector(Xpos, -589.760681, 40.0));
+		mesh2->SetRelativeRotation(FRotator(0, 0, 3));
+
+		mesh3->SetRelativeLocation(FVector(Xpos, -1178.602539, 95.043854));
+		mesh3->SetRelativeRotation(FRotator(0, 0, 7.5));
+
+		mesh4->SetRelativeLocation(FVector(Xpos, -1766.684204, 204.886566));
+		mesh4->SetRelativeRotation(FRotator(0, 0, 12));
+
+		mesh5->SetRelativeLocation(FVector(Xpos, -2331.309082, 366.883026));
+		mesh5->SetRelativeRotation(FRotator(0, 0, 18));
+		///================================================================================================
+		mesh6->SetRelativeLocation(FVector(Xpos, 589.760681, 40.0));
+		mesh6->SetRelativeRotation(FRotator(0, 0, -3));
+
+		mesh7->SetRelativeLocation(FVector(Xpos, 1178.602539, 95.043854));
+		mesh7->SetRelativeRotation(FRotator(0, 0, -7.5));
+
+		mesh8->SetRelativeLocation(FVector(Xpos, 1766.684204, 204.886566));
+		mesh8->SetRelativeRotation(FRotator(0, 0, -12));
+
+		mesh9->SetRelativeLocation(FVector(Xpos, 2331.309082, 366.883026));
+		mesh9->SetRelativeRotation(FRotator(0, 0, -18));
+	}
+	else if (trans == 8) {
+		mesh2->SetRelativeLocation(FVector(Xpos, -590.10968, 35.0));
+		mesh2->SetRelativeRotation(FRotator(0, 0, 2));
+
+		mesh3->SetRelativeLocation(FVector(Xpos, -1180.345703, 75.119965));
+		mesh3->SetRelativeRotation(FRotator(0, 0, 5));
+
+		mesh4->SetRelativeLocation(FVector(Xpos, -1775.034546, 145.47049));
+		mesh4->SetRelativeRotation(FRotator(0, 0, 8));
+
+		mesh5->SetRelativeLocation(FVector(Xpos, -2366.039795, 251.584488));
+		mesh5->SetRelativeRotation(FRotator(0, 0, 12));
+		///================================================================================================
+		mesh6->SetRelativeLocation(FVector(Xpos, 590.10968, 35.0));
+		mesh6->SetRelativeRotation(FRotator(0, 0, -2));
+
+		mesh7->SetRelativeLocation(FVector(Xpos, 1180.345703, 75.119965));
+		mesh7->SetRelativeRotation(FRotator(0, 0, -5));
+
+		mesh8->SetRelativeLocation(FVector(Xpos, 1775.034546, 145.47049));
+		mesh8->SetRelativeRotation(FRotator(0, 0, -8));
+
+		mesh9->SetRelativeLocation(FVector(Xpos, 2366.039795, 251.584488));
+		mesh9->SetRelativeRotation(FRotator(0, 0, -12));
+	}
+	else if (trans == 9) {
+		mesh2->SetRelativeLocation(FVector(Xpos, -590.28418, 25.001522));
+		mesh2->SetRelativeRotation(FRotator(0, 0, 1));
+
+		mesh3->SetRelativeLocation(FVector(Xpos, -1181.654175, 45.148521));
+		mesh3->SetRelativeRotation(FRotator(0, 0, 2.5));
+
+		mesh4->SetRelativeLocation(FVector(Xpos, -1779.219604, 85.616646));
+		mesh4->SetRelativeRotation(FRotator(0, 0, 4));
+
+		mesh5->SetRelativeLocation(FVector(Xpos, -2377.536865, 142.187057));
+		mesh5->SetRelativeRotation(FRotator(0, 0, 6));
+		///================================================================================================
+		mesh6->SetRelativeLocation(FVector(Xpos, 590.28418, 25.001522));
+		mesh6->SetRelativeRotation(FRotator(0, 0, -1));
+
+		mesh7->SetRelativeLocation(FVector(Xpos, 1181.654175, 45.148521));
+		mesh7->SetRelativeRotation(FRotator(0, 0, -2.5));
+
+		mesh8->SetRelativeLocation(FVector(Xpos, 1779.219604, 85.616646));
+		mesh8->SetRelativeRotation(FRotator(0, 0, -4));
+
+		mesh9->SetRelativeLocation(FVector(Xpos, 2377.536865, 142.187057));
+		mesh9->SetRelativeRotation(FRotator(0, 0, -6));
+	}
+		
+	else if (trans == 10) {
+		
+
+		mesh2->SetRelativeLocation(FVector(Xpos, 600, 20));
 		mesh2->SetRelativeRotation(FRotator(0, 0, 0));
 
-		mesh3->SetRelativeLocation(FVector(Xpos, 1800, 0));
+		mesh3->SetRelativeLocation(FVector(Xpos, 1200, 20));
 		mesh3->SetRelativeRotation(FRotator(0, 0, 0));
 
-		mesh4->SetRelativeLocation(FVector(Xpos, 2400, 0));
+		mesh4->SetRelativeLocation(FVector(Xpos, 1800, 20));
 		mesh4->SetRelativeRotation(FRotator(0, 0, 0));
+
+		mesh5->SetRelativeLocation(FVector(Xpos, 2400, 20));
+		mesh5->SetRelativeRotation(FRotator(0, 0, 0));
 		///================================================================================================
-		mesh6->SetRelativeLocation(FVector(Xpos, -600, 0));
+		mesh6->SetRelativeLocation(FVector(Xpos, -600, 20));
 		mesh6->SetRelativeRotation(FRotator(0, 0, 0));
 
-		mesh7->SetRelativeLocation(FVector(Xpos, -1200, 0));
+		mesh7->SetRelativeLocation(FVector(Xpos, -1200, 20));
 		mesh7->SetRelativeRotation(FRotator(0, 0, 0));
 
-		mesh8->SetRelativeLocation(FVector(Xpos, -1800, 0));
+		mesh8->SetRelativeLocation(FVector(Xpos, -1800, 20));
 		mesh8->SetRelativeRotation(FRotator(0, 0, 0));
 
-		mesh9->SetRelativeLocation(FVector(Xpos, -2400, 0));
+		mesh9->SetRelativeLocation(FVector(Xpos, -2400, 20));
 		mesh9->SetRelativeRotation(FRotator(0, 0, 0));
 	}
+
+	mesh1->AddRelativeLocation(FVector(0, 0, -20));
+	mesh2->AddRelativeLocation(FVector(0, 0, -20));
+	mesh3->AddRelativeLocation(FVector(0, 0, -20));
+	mesh4->AddRelativeLocation(FVector(0, 0, -20));
+	mesh5->AddRelativeLocation(FVector(0, 0, -20));
+	mesh6->AddRelativeLocation(FVector(0, 0, -20));
+	mesh7->AddRelativeLocation(FVector(0, 0, -20));
+	mesh8->AddRelativeLocation(FVector(0, 0, -20));
+	mesh9->AddRelativeLocation(FVector(0, 0, -20));
+
 
 }
 
