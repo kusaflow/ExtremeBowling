@@ -64,6 +64,15 @@ public:
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
 		TSubclassOf<class AActor> plane;
 
+	//bowling Section
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+		TSubclassOf<class ARollingBallDown> rollingBall;
+
+	//SeaSaw 1
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+		TSubclassOf<class AActor> seaSaw1;
+
+
 	//powerUp
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Power")
 		TSubclassOf<class AActor> P_speedUp;

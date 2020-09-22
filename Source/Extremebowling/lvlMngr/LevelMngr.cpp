@@ -4,6 +4,7 @@
 #include "LevelMngr.h"
 #include "../essential/kusaGameInstance.h"
 #include "../Basic_Lvl/block_9.h"
+#include "../Basic_Lvl/RollingBallDown.h"
 
 // Sets default values
 ALevelMngr::ALevelMngr()
@@ -100,6 +101,7 @@ void ALevelMngr::CreateLevelBlock() {
 
 	//saturation from Bevel To straight is 300
 	//saturation from straight to Bevel is 301
+	//saturation from straight to Bevel is 500
 
 	//bowling from staright path and covers starts from 400
 
@@ -108,7 +110,7 @@ void ALevelMngr::CreateLevelBlock() {
 
 	if (!hasNext) {
 		//wToSelect = (int)FMath::FRandRange(1, 20);
-		wToSelect = 400;
+		wToSelect = 500;
 	}
 	hasNext = false;
 
@@ -224,16 +226,75 @@ void ALevelMngr::CreateLevelBlock() {
 			floor->SetActorScale3D(FVector(10,27,1));
 			blocks.Push(floor);
 		}
-		xpos += 27*200;
+		xpos += 10*200;
 
 	}
+	else if (wToSelect == 401) {
+		hasNext = true;
+		wToSelect = 402;
+		next_Milestone += 10 * 200;
+		if (plane) {
+			AActor* floor = world->SpawnActor<AActor>(plane, FVector(xpos +
+				((10 * 200) / 2), -1800, 0), FRotator(0), spawnPara);
+			floor->SetActorScale3D(FVector(10, 9, 1));
+			blocks.Push(floor);
+
+			AActor* f2 = world->SpawnActor<AActor>(plane, FVector(xpos +
+				((10 * 200) / 2), 1800, 0), FRotator(0), spawnPara);
+			f2->SetActorScale3D(FVector(10, 9, 1));
+			blocks.Push(f2);
+
+			AActor* f3 = world->SpawnActor<AActor>(plane, FVector(xpos +
+				((10 * 200) / 2)-(9*200), 0, -10), FRotator(15,0,0), spawnPara);
+			f3->SetActorScale3D(FVector(8, 6, 3));
+			blocks.Push(f3);
+		}
+		xpos += 10 * 200;
+
+	}
+	else if (wToSelect == 402) {
+		hasNext = true;
+		wToSelect = 403;
+		next_Milestone += 10 * 200;
+		if (plane) {
+			AActor* floor = world->SpawnActor<AActor>(plane, FVector(xpos +
+				((10 * 200) / 2), 0, 0), FRotator(0), spawnPara);
+			floor->SetActorScale3D(FVector(10, 27, 1));
+			blocks.Push(floor);
+		}
+		xpos += 10 * 200;
+	}
+	else if (wToSelect == 403) {
+		hasNext = true;
+		wToSelect = 404;
+		next_Milestone += 40 * 200;
+		if (rollingBall) {
+			ARollingBallDown* floor = world->SpawnActor<ARollingBallDown>(rollingBall, FVector(xpos +
+				((40 * 200) / 2), 0, 0), FRotator(0), spawnPara);
+			floor->SetActorScale3D(FVector(1, 1, 1));
+			blocks.Push(floor);
+		}
+		xpos += 40 * 200;
+	}
 	//400 ens=================================================================================
+	else if (wToSelect == 500) {
+		hasNext = true;
+		wToSelect = 999;
+		int sB = 40;
+		next_Milestone += sB * 200;
+		if (seaSaw1) {
+			AActor* floor = world->SpawnActor<AActor>(seaSaw1, FVector(xpos +
+				((sB * 200) / 2), 0, 0), FRotator(0), spawnPara);
+			blocks.Push(floor);
+		}
+		xpos += 40 * 200;
+	}
 	///--------------------------------------------------------------------
 	else {
 		next_Milestone += 1000;
 		if (satuM) {
 			Ablock_9* floor = world->SpawnActor<Ablock_9>(satuM, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
-			floor->reArrange(10, xpos + 500);
+			floor->reArrange(isCurvedPlatform ? 1 : 10, xpos + 500);
 			blocks.Push(floor);
 		}
 		xpos += 1000;
