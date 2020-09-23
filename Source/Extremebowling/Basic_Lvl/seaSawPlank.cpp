@@ -12,8 +12,13 @@ AseaSawPlank::AseaSawPlank()
 	plank = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("plank"));
 	RootComponent = plank;
 
-	block = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("block"));
-	block->SetupAttachment(RootComponent);
+	block1 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("block1"));
+	block1->SetupAttachment(RootComponent);
+
+	block2 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("block2"));
+	block2->SetupAttachment(RootComponent);
+
+	plank->SetWorldScale3D(FVector(1,5,0.15));
 
 
 }
@@ -22,6 +27,17 @@ AseaSawPlank::AseaSawPlank()
 void AseaSawPlank::BeginPlay()
 {
 	Super::BeginPlay();
+
+
+	if (((int)(FMath::FRandRange(1, 100))) % 10 == 0) {
+		if (((int)(FMath::FRandRange(1, 100))) % 2 == 0) {
+			block1->SetRelativeLocation(FVector(0, 0, 200));
+			block2->SetRelativeLocation(FVector(0, 0, 400));
+		}
+		else {
+
+		}
+	}
 	
 }
 

@@ -4,23 +4,22 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "seaSawPlank.generated.h"
+#include "seaSaw1.generated.h"
 
 UCLASS()
-class EXTREMEBOWLING_API AseaSawPlank : public AActor
+class EXTREMEBOWLING_API AseaSaw1 : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AseaSawPlank();
+	AseaSaw1();
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = mesh, meta = (AllowPrivateAccess = "true"))
-		class UStaticMeshComponent* plank;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = mesh, meta = (AllowPrivateAccess = "true"))
-		class UStaticMeshComponent* block1;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = mesh, meta = (AllowPrivateAccess = "true"))
-		class UStaticMeshComponent* block2;
+		class UStaticMeshComponent* bar;
+
+	UPROPERTY(EditDefaultsOnly, category = "planks")
+		TSubclassOf<class AseaSawPlank> planks;
 
 
 protected:
