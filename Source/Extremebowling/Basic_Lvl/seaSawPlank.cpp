@@ -29,10 +29,10 @@ void AseaSawPlank::BeginPlay()
 	Super::BeginPlay();
 
 
-	if (((int)(FMath::FRandRange(1, 100))) % 10 == 0) {
+	if (((int)(FMath::FRandRange(1, 100))) % 1 == 0) {
 		if (((int)(FMath::FRandRange(1, 100))) % 2 == 0) {
-			block1->SetRelativeLocation(FVector(0, 0, 200));
-			block2->SetRelativeLocation(FVector(0, 0, 400));
+			block1->SetRelativeLocation(FVector(plank->GetComponentLocation().X, 0, 500));
+			block2->SetRelativeLocation(FVector(plank->GetComponentLocation().X, 0, 1000));
 		}
 		else {
 

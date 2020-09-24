@@ -1,7 +1,7 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "mainChar.h"
+#include "C_mainChar.h"
 #include "Components/StaticMeshComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
@@ -12,9 +12,9 @@
 #include "../essential/kusaGameInstance.h"
 
 // Sets default values
-AmainChar::AmainChar()
+AC_mainChar::AC_mainChar()
 {
- 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+ 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 	sphere = CreateDefaultSubobject<USphereComponent>(TEXT("sphere"));
@@ -22,6 +22,7 @@ AmainChar::AmainChar()
 
 	wheel = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("mesh"));
 	wheel->SetupAttachment(RootComponent);
+	wheel->SetWorldScale3D(FVector(0.6f));
 
 	cameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	cameraBoom->SetupAttachment(RootComponent);
@@ -39,7 +40,7 @@ AmainChar::AmainChar()
 }
 
 // Called when the game starts or when spawned
-void AmainChar::BeginPlay()
+void AC_mainChar::BeginPlay()
 {
 	Super::BeginPlay();
 
@@ -49,17 +50,18 @@ void AmainChar::BeginPlay()
 }
 
 // Called every frame
-void AmainChar::Tick(float DeltaTime)
+void AC_mainChar::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 	UkusaGameInstance* gameInst = Cast<UkusaGameInstance>(GetGameInstance());
 	gameInst->playerPos = RootComponent->GetComponentLocation().X;
 
-	
+
 
 	if (!brakeOn) {
-		sphere->AddAngularImpulseInDegrees(FVector(0, 3000 * DeltaTime, 0), NAME_None, true);
+		//sphere->AddAngularImpulseInDegrees(FVector(0, 3000 * DeltaTime, 0), NAME_None, true);
+		sphere->AddForce(FVector(3000*DeltaTime, 0, 0), NAME_None, true);
 	}
 
 
@@ -70,28 +72,27 @@ void AmainChar::Tick(float DeltaTime)
 }
 
 // Called to bind functionality to input
-void AmainChar::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void AC_mainChar::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	PlayerInputComponent->BindAxis("Dir", this, &AmainChar::Movement);
-	PlayerInputComponent->BindAxis("Brake", this, &AmainChar::brake_F);
+	PlayerInputComponent->BindAxis("Dir", this, &AC_mainChar::Movement);
+	PlayerInputComponent->BindAxis("Brake", this, &AC_mainChar::brake_F);
 
 }
 
-
-void AmainChar::Movement (float val) {
+void AC_mainChar::Movement(float val) {
 	if (val == -1) {
 		sphere->AddForce(FVector(0, -2000, 0), NAME_None, true);
 	}
-	else if (val == 1){
+	else if (val == 1) {
 		sphere->AddForce(FVector(0, 2000, 0), NAME_None, true);
 	}
 }
 
 
 
-void AmainChar::brake_F(float val) {
+void AC_mainChar::brake_F(float val) {
 	brakeOn = false;
 	if (val == 1) {
 		brakeOn = true;
@@ -100,12 +101,9 @@ void AmainChar::brake_F(float val) {
 		currV.X *= -2;
 		currV.Y *= -2;
 
-		if (currV.Z <= 50) {
-			return;
-		}
-		
 		//sphere->AddAngularImpulseInDegrees(currV);
 		sphere->AddForce(currV, NAME_None, true);
 	}
 }
+
 

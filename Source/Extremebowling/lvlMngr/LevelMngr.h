@@ -72,6 +72,11 @@ public:
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
 		TSubclassOf<class AActor> seaSaw1;
 
+	//Movement Blocks
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+		TSubclassOf<class Amove_leftRight> moveB1;
+
+
 
 	//powerUp
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Power")

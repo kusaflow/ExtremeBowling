@@ -25,7 +25,7 @@ void AseaSaw1::BeginPlay()
 	spawnPara.Owner = this;
 	int xpos = bar->GetComponentLocation().X;
 	for (int i = 0; i < 10; i++) {
-		AseaSawPlank* aa = GetWorld()->SpawnActor<AseaSawPlank>(planks, FVector(xpos, 0, 0), FRotator(0), spawnPara);
+		AseaSawPlank* aa = GetWorld()->SpawnActor<AseaSawPlank>(planks, FVector(xpos, 0, 100), FRotator(0), spawnPara);
 		xpos += 300;
 	}
 	

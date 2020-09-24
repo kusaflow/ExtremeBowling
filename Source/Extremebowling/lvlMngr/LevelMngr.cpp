@@ -5,6 +5,7 @@
 #include "../essential/kusaGameInstance.h"
 #include "../Basic_Lvl/block_9.h"
 #include "../Basic_Lvl/RollingBallDown.h"
+#include "../Basic_Lvl/move_leftRight.h"
 
 // Sets default values
 ALevelMngr::ALevelMngr()
@@ -110,7 +111,7 @@ void ALevelMngr::CreateLevelBlock() {
 
 	if (!hasNext) {
 		//wToSelect = (int)FMath::FRandRange(1, 20);
-		wToSelect = 500;
+		wToSelect = 501;
 	}
 	hasNext = false;
 
@@ -288,6 +289,24 @@ void ALevelMngr::CreateLevelBlock() {
 			blocks.Push(floor);
 		}
 		xpos += 40 * 200;
+	}
+	else if (wToSelect == 501) {
+		hasNext = true;
+		wToSelect = 999;
+		int len  = ((int)(FMath::FRandRange(3,11)));
+		int sB = 5 * len;
+
+		if (moveB1) {
+			for (int i = 0; i < len; i++) {
+				Amove_leftRight* floor = world->SpawnActor<Amove_leftRight>(moveB1, FVector(xpos +
+					((5 * 200) / 2), 0, 0), FRotator(0), spawnPara);
+				floor->setUp(false, false, false, false);
+				blocks.Push(floor);
+				xpos += (5 * 200);
+			}
+		}
+
+		next_Milestone += sB * 200;
 	}
 	///--------------------------------------------------------------------
 	else {
