@@ -11,6 +11,9 @@
 #include "Kismet/GameplayStatics.h"
 #include "../essential/kusaGameInstance.h"
 
+
+#include "GameFramework/CharacterMovementComponent.h"
+
 // Sets default values
 AC_mainChar::AC_mainChar()
 {
@@ -18,17 +21,17 @@ AC_mainChar::AC_mainChar()
 	PrimaryActorTick.bCanEverTick = true;
 
 	sphere = CreateDefaultSubobject<USphereComponent>(TEXT("sphere"));
-	RootComponent = sphere;
+	sphere->SetupAttachment(RootComponent);;
 
 	wheel = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("mesh"));
-	wheel->SetupAttachment(RootComponent);
+	wheel->SetupAttachment(sphere);
 	wheel->SetWorldScale3D(FVector(0.6f));
 
 	cameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
-	cameraBoom->SetupAttachment(RootComponent);
+	cameraBoom->SetupAttachment(sphere);
 	cameraBoom->bDoCollisionTest = false;
-	cameraBoom->TargetArmLength = 300;
-	cameraBoom->SetRelativeRotation(FRotator(-30, 0, 0));
+	cameraBoom->TargetArmLength = 400;
+	cameraBoom->SetRelativeRotation(FRotator(340, 0, 0));
 	cameraBoom->bInheritPitch = false;
 	cameraBoom->bInheritRoll = false;
 	cameraBoom->bInheritYaw = false;
@@ -36,6 +39,7 @@ AC_mainChar::AC_mainChar()
 
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(cameraBoom, USpringArmComponent::SocketName);
+	FollowCamera->SetRelativeRotation(FRotator(15, 0, 0));
 
 }
 
@@ -57,11 +61,13 @@ void AC_mainChar::Tick(float DeltaTime)
 	UkusaGameInstance* gameInst = Cast<UkusaGameInstance>(GetGameInstance());
 	gameInst->playerPos = RootComponent->GetComponentLocation().X;
 
-
+	RootComponent->SetWorldLocation(sphere->GetComponentLocation());
+	wheel->SetRelativeRotation(sphere->GetRelativeRotation());
 
 	if (!brakeOn) {
 		//sphere->AddAngularImpulseInDegrees(FVector(0, 3000 * DeltaTime, 0), NAME_None, true);
-		sphere->AddForce(FVector(3000*DeltaTime, 0, 0), NAME_None, true);
+		//sphere->AddAngularImpulse(FVector(0, 3000 * DeltaTime, 0), NAME_None, true);
+		sphere->AddForce(FVector(50000*DeltaTime, 0, 0), NAME_None, true);
 	}
 
 
@@ -96,13 +102,21 @@ void AC_mainChar::brake_F(float val) {
 	brakeOn = false;
 	if (val == 1) {
 		brakeOn = true;
-		FVector currV = GetVelocity();
+		FVector currV = sphere->GetComponentVelocity();// GetVelocity();
 
-		currV.X *= -2;
-		currV.Y *= -2;
+		if (currV.X >= 1000) {
+			currV.X /= 1.03f;
+			currV.Y /= 1.03f;
+		}
+		else {
+			currV.X /= 1.2f;
+			currV.Y /= 1.2f;
+		}
 
+
+		sphere->SetPhysicsLinearVelocity(currV);
 		//sphere->AddAngularImpulseInDegrees(currV);
-		sphere->AddForce(currV, NAME_None, true);
+		//sphere->AddForce(currV, NAME_None, true);
 	}
 }
 
