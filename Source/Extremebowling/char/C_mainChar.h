@@ -31,6 +31,13 @@ public:
 
 	bool brakeOn = false;
 
+
+	//camera PRojections--------------------
+	FRotator boom_predicted_Rot, camera_predicted_Rot;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	int boom_predicted_length; 
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

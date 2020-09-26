@@ -111,7 +111,7 @@ void ALevelMngr::CreateLevelBlock() {
 
 	if (!hasNext) {
 		//wToSelect = (int)FMath::FRandRange(1, 20);
-		wToSelect = 501;
+		wToSelect = 5015;
 	}
 	hasNext = false;
 

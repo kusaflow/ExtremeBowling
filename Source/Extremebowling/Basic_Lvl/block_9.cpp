@@ -2,6 +2,8 @@
 
 
 #include "block_9.h"
+#include "Components/BoxComponent.h"
+#include "../char/C_mainChar.h"
 
 // Sets default values
 Ablock_9::Ablock_9()
@@ -36,6 +38,9 @@ Ablock_9::Ablock_9()
 	mesh9 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("mesh9"));
 	mesh9->SetupAttachment(RootComponent);
 
+	Camera_Manupulator = CreateDefaultSubobject<UBoxComponent>(TEXT("cameraManupulatorBox"));
+	Camera_Manupulator->SetupAttachment(RootComponent);
+
 
 
 
@@ -47,6 +52,8 @@ Ablock_9::Ablock_9()
 void Ablock_9::BeginPlay()
 {
 	Super::BeginPlay();
+
+	Camera_Manupulator->OnComponentBeginOverlap.AddDynamic(this, &Ablock_9::OnOverlapBegin);
 	
 }
 
@@ -56,9 +63,12 @@ void Ablock_9::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
+
 void Ablock_9::reArrange(int trans, float Xpos) {
 	mesh1->SetRelativeLocation(FVector(Xpos, 0, 20));
 	mesh1->SetRelativeRotation(FRotator(0));
+
+	Camera_Manupulator->SetRelativeLocation(FVector(Xpos, 0, 0));
 
 	if (trans == 1) {
 		mesh2->SetRelativeLocation(FVector(Xpos, -587.844421, 68.936539));
@@ -326,4 +336,23 @@ void Ablock_9::reArrange(int trans, float Xpos) {
 
 
 }
+
+
+void Ablock_9::OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor,
+	class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) 
+{
+	AC_mainChar* mainC = Cast<AC_mainChar>(OtherActor);
+
+	if (mainC) {
+
+		mainC->boom_predicted_length = 400;
+		mainC->boom_predicted_Rot = FRotator(340, 0, 0);
+		mainC->camera_predicted_Rot = FRotator(15, 0, 0);
+		Camera_Manupulator->DestroyComponent();
+	}
+
+
+}
+
+
 

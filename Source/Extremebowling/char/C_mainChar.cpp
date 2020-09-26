@@ -10,9 +10,8 @@
 #include "Components/InputComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "../essential/kusaGameInstance.h"
-
-
 #include "GameFramework/CharacterMovementComponent.h"
+#include "../char/C_mainChar.h"
 
 // Sets default values
 AC_mainChar::AC_mainChar()
@@ -50,6 +49,8 @@ void AC_mainChar::BeginPlay()
 
 	UkusaGameInstance* gameInst = Cast<UkusaGameInstance>(GetGameInstance());
 	gameInst->SpeedTimer = 0;
+
+	boom_predicted_length = 400;
 	
 }
 
@@ -73,6 +74,18 @@ void AC_mainChar::Tick(float DeltaTime)
 
 	if (gameInst->SpeedTimer <= 500) {
 		gameInst->SpeedTimer += 100 * DeltaTime;
+	}
+
+	///camera Update Interopolated
+	if (cameraBoom->TargetArmLength > boom_predicted_length+10) {
+		cameraBoom->TargetArmLength -= 1000 * DeltaTime;
+	}
+	else if (cameraBoom->TargetArmLength < boom_predicted_length-10) {
+		cameraBoom->TargetArmLength += 1000 * DeltaTime;
+	}
+
+	if (boom_predicted_Rot.Yaw > cameraBoom->GetRelativeRotation().Yaw) {
+		//cameraBoom->AddRelativeRotation(FRotator(0, ));
 	}
 
 }
@@ -105,8 +118,8 @@ void AC_mainChar::brake_F(float val) {
 		FVector currV = sphere->GetComponentVelocity();// GetVelocity();
 
 		if (currV.X >= 1000) {
-			currV.X /= 1.03f;
-			currV.Y /= 1.03f;
+			currV.X /= 1.2f;
+			currV.Y /= 1.2f;
 		}
 		else {
 			currV.X /= 1.2f;
