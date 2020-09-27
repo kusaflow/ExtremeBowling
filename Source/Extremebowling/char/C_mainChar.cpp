@@ -66,9 +66,9 @@ void AC_mainChar::Tick(float DeltaTime)
 	wheel->SetRelativeRotation(sphere->GetRelativeRotation());
 
 	if (!brakeOn) {
-		//sphere->AddAngularImpulseInDegrees(FVector(0, 3000 * DeltaTime, 0), NAME_None, true);
-		//sphere->AddAngularImpulse(FVector(0, 3000 * DeltaTime, 0), NAME_None, true);
-		sphere->AddForce(FVector(50000*DeltaTime, 0, 0), NAME_None, true);
+		sphere->AddAngularImpulseInDegrees(FVector(0, 4200 * DeltaTime, 0), NAME_None, true);
+		//sphere->AddAngularImpulse(FVector(0, 50 * DeltaTime, 0), NAME_None, true);
+		//sphere->AddForce(FVector(50000*DeltaTime, 0, 0), NAME_None, true);
 	}
 
 
@@ -77,16 +77,36 @@ void AC_mainChar::Tick(float DeltaTime)
 	}
 
 	///camera Update Interopolated
-	if (cameraBoom->TargetArmLength > boom_predicted_length+10) {
-		cameraBoom->TargetArmLength -= 1000 * DeltaTime;
+	if (cameraBoom->TargetArmLength > boom_predicted_length+20) {
+		cameraBoom->TargetArmLength -= 1200 * DeltaTime;
 	}
-	else if (cameraBoom->TargetArmLength < boom_predicted_length-10) {
-		cameraBoom->TargetArmLength += 1000 * DeltaTime;
+	else if (cameraBoom->TargetArmLength < boom_predicted_length-20) {
+		cameraBoom->TargetArmLength += 1200 * DeltaTime;
 	}
 
-	if (boom_predicted_Rot.Yaw > cameraBoom->GetRelativeRotation().Yaw) {
-		//cameraBoom->AddRelativeRotation(FRotator(0, ));
+	cameraBoom->SetRelativeRotation(boom_predicted_Rot);
+
+	//camer Boom
+	/*if (boom_predicted_Rot.Yaw - 5 > cameraBoom->GetRelativeRotation().Yaw) {
+		cameraBoom->AddRelativeRotation(FRotator(0, 100* DeltaTime, 0));
 	}
+	else if (boom_predicted_Rot.Yaw + 5 < cameraBoom->GetRelativeRotation().Yaw) {
+		cameraBoom->AddRelativeRotation(FRotator(0, -100 * DeltaTime, 0));
+	}
+
+	if (boom_predicted_Rot.Pitch - 5 > cameraBoom->GetRelativeRotation().Pitch) {
+		cameraBoom->AddRelativeRotation(FRotator(100 * DeltaTime,0, 0));
+	}
+	else if (boom_predicted_Rot.Pitch + 5 < cameraBoom->GetRelativeRotation().Pitch) {
+		cameraBoom->AddRelativeRotation(FRotator(-100 * DeltaTime,0, 0));
+	}
+
+	if (boom_predicted_Rot.Roll - 5 > cameraBoom->GetRelativeRotation().Roll) {
+		cameraBoom->AddRelativeRotation(FRotator(0,0,100 * DeltaTime));
+	}
+	else if (boom_predicted_Rot.Roll + 5 < cameraBoom->GetRelativeRotation().Roll) {
+		cameraBoom->AddRelativeRotation(FRotator(0,0,-100 * DeltaTime));
+	}*/
 
 }
 

@@ -23,6 +23,8 @@ Amove_leftRight::Amove_leftRight()
 	
 	speed = FMath::FRandRange(100,1000);
 
+	plane->SetSimulatePhysics(true);
+
 }
 
 // Called when the game starts or when spawned
@@ -41,13 +43,16 @@ void Amove_leftRight::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	if (inpos) {
-		RootComponent->AddRelativeLocation(FVector(0, moveInY ? speed*DeltaTime : 0, moveInY ? 0 : speed * DeltaTime));
+		//RootComponent->AddRelativeLocation(FVector(0, moveInY ? speed*DeltaTime : 0, moveInY ? 0 : speed * DeltaTime));
+		plane->AddForce(FVector(0, moveInY ? speed * DeltaTime : 0, moveInY ? 0 : speed * DeltaTime));
 		if (moveInY ? RootComponent->GetComponentLocation().Y >= ypos : RootComponent->GetComponentLocation().Z >= zpos) {
 			inpos = false;
 		}
 	}
 	else {
-		RootComponent->AddRelativeLocation(FVector(0, moveInY ? -1 * speed * DeltaTime : 0, moveInY ? 0 : -1 * speed * DeltaTime));
+		//RootComponent->AddRelativeLocation(FVector(0, moveInY ? -1 * speed * DeltaTime : 0, moveInY ? 0 : -1 * speed * DeltaTime));
+		plane->AddForce(FVector(0, moveInY ? -1 * speed * DeltaTime : 0, moveInY ? 0 : -1 * speed * DeltaTime));
+
 		if (moveInY ? RootComponent->GetComponentLocation().Y <= ypos*-1 : RootComponent->GetComponentLocation().Z <= zpos*-1) {
 			inpos = true;
 		}
@@ -77,9 +82,9 @@ void Amove_leftRight::OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, 
 
 	if (mainC) {
 
-		mainC->boom_predicted_length = 1200;
-		mainC->boom_predicted_Rot = FRotator(340, 0, 0);
-		mainC->camera_predicted_Rot = FRotator(15, 0, 0);
+		mainC->boom_predicted_length = 1500;
+		mainC->boom_predicted_Rot = FRotator(315, 0, 0);
+		//mainC->camera_predicted_Rot = FRotator(15, 0, 0);
 		Camera_Manupulator->DestroyComponent();
 	}
 

@@ -347,7 +347,7 @@ void Ablock_9::OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class A
 
 		mainC->boom_predicted_length = 400;
 		mainC->boom_predicted_Rot = FRotator(340, 0, 0);
-		mainC->camera_predicted_Rot = FRotator(15, 0, 0);
+		//mainC->camera_predicted_Rot = FRotator(15, 0, 0);
 		Camera_Manupulator->DestroyComponent();
 	}
 
