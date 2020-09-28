@@ -55,4 +55,6 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void brake_F(float val);
 
+	void JumpAction();
+
 };

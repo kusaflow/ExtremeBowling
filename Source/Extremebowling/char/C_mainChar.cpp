@@ -20,6 +20,7 @@ AC_mainChar::AC_mainChar()
 	PrimaryActorTick.bCanEverTick = true;
 
 	sphere = CreateDefaultSubobject<USphereComponent>(TEXT("sphere"));
+	//RootComponent = sphere;
 	sphere->SetupAttachment(RootComponent);;
 
 	wheel = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("mesh"));
@@ -118,6 +119,8 @@ void AC_mainChar::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	PlayerInputComponent->BindAxis("Dir", this, &AC_mainChar::Movement);
 	PlayerInputComponent->BindAxis("Brake", this, &AC_mainChar::brake_F);
 
+	PlayerInputComponent->BindAction("jump", IE_Pressed, this, &AC_mainChar::JumpAction);
+
 }
 
 void AC_mainChar::Movement(float val) {
@@ -151,6 +154,19 @@ void AC_mainChar::brake_F(float val) {
 		//sphere->AddAngularImpulseInDegrees(currV);
 		//sphere->AddForce(currV, NAME_None, true);
 	}
+}
+
+void AC_mainChar::JumpAction() {
+	if (sphere->GetComponentVelocity().Z >= 100 || sphere->GetComponentVelocity().Z <= -100) {
+		return;
+	}
+	if (sphere->GetComponentVelocity().X <= 1000) {
+		sphere->AddForce(FVector(0, 0, 50000), NAME_None, true);
+	}
+	else {
+		sphere->AddForce(FVector(0, 0, 5000), NAME_None, true);
+	}
+	//Jump();
 }
 
 

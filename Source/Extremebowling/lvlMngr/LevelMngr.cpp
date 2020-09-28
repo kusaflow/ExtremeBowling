@@ -300,7 +300,7 @@ void ALevelMngr::CreateLevelBlock() {
 			for (int i = 0; i < len; i++) {
 				Amove_leftRight* floor = world->SpawnActor<Amove_leftRight>(moveB1, FVector(xpos +
 					((5 * 200) / 2), 0, 0), FRotator(0), spawnPara);
-				floor->setUp(false, true, false, false);
+				floor->setUp(false, false, false, false);
 				blocks.Push(floor);
 				xpos += (5 * 200);
 			}

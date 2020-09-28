@@ -18,10 +18,10 @@ Amove_leftRight::Amove_leftRight()
 	Camera_Manupulator = CreateDefaultSubobject<UBoxComponent>(TEXT("cameraManupulatorBox"));
 	Camera_Manupulator->SetupAttachment(RootComponent);
 
-	ypos = 500;
-	zpos = 500;
+	ypos = 200;
+	zpos = 80;
 	
-	speed = FMath::FRandRange(100,1000);
+	speed = FMath::FRandRange(5000,20000);
 
 	plane->SetSimulatePhysics(true);
 
@@ -44,14 +44,14 @@ void Amove_leftRight::Tick(float DeltaTime)
 
 	if (inpos) {
 		//RootComponent->AddRelativeLocation(FVector(0, moveInY ? speed*DeltaTime : 0, moveInY ? 0 : speed * DeltaTime));
-		plane->AddForce(FVector(0, moveInY ? speed * DeltaTime : 0, moveInY ? 0 : speed * DeltaTime));
+		plane->AddForce(FVector(0, moveInY ? speed * DeltaTime : 0, moveInY ? 0 : speed * DeltaTime), NAME_None, true);
 		if (moveInY ? RootComponent->GetComponentLocation().Y >= ypos : RootComponent->GetComponentLocation().Z >= zpos) {
 			inpos = false;
 		}
 	}
 	else {
 		//RootComponent->AddRelativeLocation(FVector(0, moveInY ? -1 * speed * DeltaTime : 0, moveInY ? 0 : -1 * speed * DeltaTime));
-		plane->AddForce(FVector(0, moveInY ? -1 * speed * DeltaTime : 0, moveInY ? 0 : -1 * speed * DeltaTime));
+		plane->AddForce(FVector(0, moveInY ? -1 * speed * DeltaTime : 0, moveInY ? 0 : -1 * speed * DeltaTime), NAME_None, true);
 
 		if (moveInY ? RootComponent->GetComponentLocation().Y <= ypos*-1 : RootComponent->GetComponentLocation().Z <= zpos*-1) {
 			inpos = true;
