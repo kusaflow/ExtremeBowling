@@ -76,6 +76,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
 		TSubclassOf<class Amove_leftRight> moveB1;
 
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+		TSubclassOf<class AActor> plusRot;
+
 
 
 	//powerUp

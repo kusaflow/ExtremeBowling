@@ -111,7 +111,7 @@ void ALevelMngr::CreateLevelBlock() {
 
 	if (!hasNext) {
 		//wToSelect = (int)FMath::FRandRange(1, 20);
-		wToSelect = 501;
+		wToSelect = 502;
 	}
 	hasNext = false;
 
@@ -307,6 +307,22 @@ void ALevelMngr::CreateLevelBlock() {
 		}
 
 		next_Milestone += sB * 200;
+	}
+	// plus rotation 
+	else if (wToSelect == 502) {
+		hasNext = true;
+		wToSelect = 999;
+		int sb = 24;
+
+		if (plusRot) {
+			AActor* floor = world->SpawnActor<AActor>(plusRot, FVector(xpos +
+				((sb) / 2), 0, 0), FRotator(0), spawnPara);
+				
+			blocks.Push(floor);	
+		}
+
+		next_Milestone += sb*200;
+		xpos += sb * 200;
 	}
 	///--------------------------------------------------------------------
 	else {

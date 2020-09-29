@@ -157,15 +157,12 @@ void AC_mainChar::brake_F(float val) {
 }
 
 void AC_mainChar::JumpAction() {
-	if (sphere->GetComponentVelocity().Z >= 100 || sphere->GetComponentVelocity().Z <= -100) {
-		return;
-	}
-	if (sphere->GetComponentVelocity().X <= 1000) {
-		sphere->AddForce(FVector(0, 0, 50000), NAME_None, true);
-	}
-	else {
-		sphere->AddForce(FVector(0, 0, 5000), NAME_None, true);
-	}
+	//if (sphere->GetComponentVelocity().Z >= 100 || sphere->GetComponentVelocity().Z <= -100) {
+	//	return;
+	//}
+	//sphere->AddForce(FVector(0, 0, 90000), NAME_None, true);
+	
+	
 	//Jump();
 }
 
