@@ -355,4 +355,29 @@ void Ablock_9::OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class A
 }
 
 
+void Ablock_9 :: YRoatation(float RotInY) {
+	mesh1->SetRelativeRotation(FRotator(RotInY, mesh1->GetRelativeRotation().Yaw, mesh1->GetRelativeRotation().Roll));
+	mesh2->SetRelativeRotation(FRotator(RotInY, mesh2->GetRelativeRotation().Yaw, mesh2->GetRelativeRotation().Roll));
+	mesh3->SetRelativeRotation(FRotator(RotInY, mesh3->GetRelativeRotation().Yaw, mesh3->GetRelativeRotation().Roll));
+	mesh4->SetRelativeRotation(FRotator(RotInY, mesh4->GetRelativeRotation().Yaw, mesh4->GetRelativeRotation().Roll));
+	mesh5->SetRelativeRotation(FRotator(RotInY, mesh5->GetRelativeRotation().Yaw, mesh5->GetRelativeRotation().Roll));
+	mesh6->SetRelativeRotation(FRotator(RotInY, mesh6->GetRelativeRotation().Yaw, mesh6->GetRelativeRotation().Roll));
+	mesh7->SetRelativeRotation(FRotator(RotInY, mesh7->GetRelativeRotation().Yaw, mesh7->GetRelativeRotation().Roll));
+	mesh8->SetRelativeRotation(FRotator(RotInY, mesh8->GetRelativeRotation().Yaw, mesh8->GetRelativeRotation().Roll));
+	mesh9->SetRelativeRotation(FRotator(RotInY, mesh9->GetRelativeRotation().Yaw, mesh9->GetRelativeRotation().Roll));
+
+}
+
+void Ablock_9 :: Zpos(float val) {
+	mesh1->SetRelativeLocation(FVector(mesh1->GetRelativeLocation().X, mesh1->GetRelativeLocation().Y, val));
+	mesh2->SetRelativeLocation(FVector(mesh2->GetRelativeLocation().X, mesh2->GetRelativeLocation().Y, val));
+	mesh3->SetRelativeLocation(FVector(mesh3->GetRelativeLocation().X, mesh3->GetRelativeLocation().Y, val));
+	mesh4->SetRelativeLocation(FVector(mesh4->GetRelativeLocation().X, mesh4->GetRelativeLocation().Y, val));
+	mesh5->SetRelativeLocation(FVector(mesh5->GetRelativeLocation().X, mesh5->GetRelativeLocation().Y, val));
+	mesh6->SetRelativeLocation(FVector(mesh6->GetRelativeLocation().X, mesh6->GetRelativeLocation().Y, val));
+	mesh7->SetRelativeLocation(FVector(mesh7->GetRelativeLocation().X, mesh7->GetRelativeLocation().Y, val));
+	mesh8->SetRelativeLocation(FVector(mesh8->GetRelativeLocation().X, mesh8->GetRelativeLocation().Y, val));
+	mesh9->SetRelativeLocation(FVector(mesh9->GetRelativeLocation().X, mesh9->GetRelativeLocation().Y, val));
+
+}
 

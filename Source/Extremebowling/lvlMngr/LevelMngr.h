@@ -29,6 +29,7 @@ public:
 
 
 	int wToSelect = 400;
+	int backUp_wToSelect = 0;
 
 
 

@@ -104,6 +104,8 @@ void ALevelMngr::CreateLevelBlock() {
 	//saturation from straight to Bevel is 301
 	//saturation from straight to Bevel is 500
 
+	//helper starts from 1000
+
 	//bowling from staright path and covers starts from 400
 
 
@@ -133,6 +135,9 @@ void ALevelMngr::CreateLevelBlock() {
 
 
 	}
+
+	//saturation
+	//if ()
 
 	if (wToSelect == 1) {
 		next_Milestone += 1000;
@@ -308,21 +313,99 @@ void ALevelMngr::CreateLevelBlock() {
 
 		next_Milestone += sB * 200;
 	}
-	// plus rotation 
+	// plus rotation ===================================
 	else if (wToSelect == 502) {
 		hasNext = true;
-		wToSelect = 999;
+		wToSelect = 150201;
+		next_Milestone += 1000;
+		if (satuM) {
+			Ablock_9* floor = world->SpawnActor<Ablock_9>(satuM, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+			floor->reArrange(10, xpos + 500);
+			floor->YRoatation(13);
+			floor->Zpos(110);
+			blocks.Push(floor);
+		}
+		xpos += 1000;
+	}
+	//helper for pluss(1 for heper ,502 helping for,01 helpernumber)
+	else if (wToSelect == 150201) {
+		hasNext = true;
+		wToSelect = 150202;
+		next_Milestone += 900;
+		if (satuM) {
+			Ablock_9* floor = world->SpawnActor<Ablock_9>(satuM, FVector(xpos + 450, 0, 0), FRotator(0), spawnPara);
+			floor->reArrange(10, xpos + 450);
+			floor->YRoatation(20);
+			floor->Zpos(380);
+			blocks.Push(floor);
+		}
+		xpos += 900;
+	}
+	else if (wToSelect == 150202) {
+		hasNext = true;
+		wToSelect = 150203;
+		next_Milestone += 900;
+		if (satuM) {
+			Ablock_9* floor = world->SpawnActor<Ablock_9>(satuM, FVector(xpos + 450, 0, 0), FRotator(0), spawnPara);
+			floor->reArrange(10, xpos + 450);
+			floor->Zpos(540);
+			blocks.Push(floor);
+		}
+		xpos += 900;
+	}
+	//mainWheel
+	else if (wToSelect == 150203) {
+		hasNext = true;
+		wToSelect = 150204;
 		int sb = 24;
 
 		if (plusRot) {
 			AActor* floor = world->SpawnActor<AActor>(plusRot, FVector(xpos +
-				((sb) / 2), 0, 0), FRotator(0), spawnPara);
-				
-			blocks.Push(floor);	
+				((sb * 200) / 2), 0, 0), FRotator(0), spawnPara);
+
+			blocks.Push(floor);
 		}
 
-		next_Milestone += sb*200;
+		next_Milestone += sb * 200;
 		xpos += sb * 200;
+	}
+	else if (wToSelect == 150204) {
+		hasNext = true;
+		wToSelect = 150205;
+		next_Milestone += 900;
+		if (satuM) {
+			Ablock_9* floor = world->SpawnActor<Ablock_9>(satuM, FVector(xpos + 450, 0, 0), FRotator(0), spawnPara);
+			floor->reArrange(10, xpos + 450);
+			floor->Zpos(540);
+			blocks.Push(floor);
+		}
+		xpos += 900;
+	}
+	else if (wToSelect == 150205) {
+		hasNext = true;
+		wToSelect = 150206;
+		next_Milestone += 900;
+		if (satuM) {
+			Ablock_9* floor = world->SpawnActor<Ablock_9>(satuM, FVector(xpos + 450, 0, 0), FRotator(0), spawnPara);
+			floor->reArrange(10, xpos + 450);
+			floor->YRoatation(-20);
+			floor->Zpos(380);
+			blocks.Push(floor);
+		}
+		xpos += 900;
+	}
+	else if (wToSelect == 150206) {
+		hasNext = true;
+		wToSelect = 999;
+		next_Milestone += 1000;
+		if (satuM) {
+			Ablock_9* floor = world->SpawnActor<Ablock_9>(satuM, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+			floor->reArrange(10, xpos + 500);
+			floor->YRoatation(-13);
+			floor->Zpos(110);
+			blocks.Push(floor);
+		}
+		xpos += 1000;
 	}
 	///--------------------------------------------------------------------
 	else {

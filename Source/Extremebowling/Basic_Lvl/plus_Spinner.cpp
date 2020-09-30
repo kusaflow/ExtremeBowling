@@ -21,6 +21,10 @@ void Aplus_Spinner::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	plane->AddRelativeLocation(FVector(0, 0, -70));
+	
+
+	
 }
 
 // Called every frame
