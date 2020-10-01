@@ -381,3 +381,9 @@ void Ablock_9 :: Zpos(float val) {
 
 }
 
+
+
+void Ablock_9 :: destroyBox() {
+	if (Camera_Manupulator)
+		Camera_Manupulator->DestroyComponent();
+}

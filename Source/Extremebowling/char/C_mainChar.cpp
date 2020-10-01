@@ -125,10 +125,12 @@ void AC_mainChar::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 void AC_mainChar::Movement(float val) {
 	if (val == -1) {
-		sphere->AddForce(FVector(0, -2000, 0), NAME_None, true);
+		sphere->AddAngularImpulseInDegrees(FVector(5000* GetWorld()->GetDeltaSeconds(),0, 0), NAME_None, true);
+		//sphere->AddForce(FVector(0, -2000, 0), NAME_None, true);
 	}
 	else if (val == 1) {
-		sphere->AddForce(FVector(0, 2000, 0), NAME_None, true);
+		sphere->AddAngularImpulseInDegrees(FVector(-5000 * GetWorld()->GetDeltaSeconds(), 0, 0), NAME_None, true);
+		//sphere->AddForce(FVector(0, 2000, 0), NAME_None, true);
 	}
 }
 
@@ -142,11 +144,11 @@ void AC_mainChar::brake_F(float val) {
 
 		if (currV.X >= 1000) {
 			currV.X /= 1.2f;
-			currV.Y /= 1.2f;
+			//currV.Y /= 1.2f;
 		}
 		else {
 			currV.X /= 1.2f;
-			currV.Y /= 1.2f;
+			//currV.Y /= 1.2f;
 		}
 
 

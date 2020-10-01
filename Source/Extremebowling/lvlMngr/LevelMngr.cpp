@@ -321,8 +321,9 @@ void ALevelMngr::CreateLevelBlock() {
 		if (satuM) {
 			Ablock_9* floor = world->SpawnActor<Ablock_9>(satuM, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
 			floor->reArrange(10, xpos + 500);
-			floor->YRoatation(13);
-			floor->Zpos(110);
+			floor->YRoatation(12);
+			floor->Zpos(100);
+			floor->destroyBox();
 			blocks.Push(floor);
 		}
 		xpos += 1000;
@@ -335,8 +336,9 @@ void ALevelMngr::CreateLevelBlock() {
 		if (satuM) {
 			Ablock_9* floor = world->SpawnActor<Ablock_9>(satuM, FVector(xpos + 450, 0, 0), FRotator(0), spawnPara);
 			floor->reArrange(10, xpos + 450);
-			floor->YRoatation(20);
-			floor->Zpos(380);
+			floor->YRoatation(15);
+			floor->Zpos(320.0);
+			floor->destroyBox();
 			blocks.Push(floor);
 		}
 		xpos += 900;
@@ -344,20 +346,21 @@ void ALevelMngr::CreateLevelBlock() {
 	else if (wToSelect == 150202) {
 		hasNext = true;
 		wToSelect = 150203;
-		next_Milestone += 900;
+		next_Milestone += 1000;
 		if (satuM) {
-			Ablock_9* floor = world->SpawnActor<Ablock_9>(satuM, FVector(xpos + 450, 0, 0), FRotator(0), spawnPara);
-			floor->reArrange(10, xpos + 450);
-			floor->Zpos(540);
+			Ablock_9* floor = world->SpawnActor<Ablock_9>(satuM, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+			floor->reArrange(10, xpos + 500);
+			floor->Zpos(440.0);
+			floor->destroyBox();
 			blocks.Push(floor);
 		}
-		xpos += 900;
+		xpos += 1000;
 	}
 	//mainWheel
 	else if (wToSelect == 150203) {
 		hasNext = true;
 		wToSelect = 150204;
-		int sb = 24;
+		int sb = 35;
 
 		if (plusRot) {
 			AActor* floor = world->SpawnActor<AActor>(plusRot, FVector(xpos +
@@ -367,7 +370,7 @@ void ALevelMngr::CreateLevelBlock() {
 		}
 
 		next_Milestone += sb * 200;
-		xpos += sb * 200;
+		xpos += (sb+1) * 200;
 	}
 	else if (wToSelect == 150204) {
 		hasNext = true;
@@ -376,7 +379,8 @@ void ALevelMngr::CreateLevelBlock() {
 		if (satuM) {
 			Ablock_9* floor = world->SpawnActor<Ablock_9>(satuM, FVector(xpos + 450, 0, 0), FRotator(0), spawnPara);
 			floor->reArrange(10, xpos + 450);
-			floor->Zpos(540);
+			floor->Zpos(-420);
+			floor->destroyBox();
 			blocks.Push(floor);
 		}
 		xpos += 900;
@@ -388,8 +392,8 @@ void ALevelMngr::CreateLevelBlock() {
 		if (satuM) {
 			Ablock_9* floor = world->SpawnActor<Ablock_9>(satuM, FVector(xpos + 450, 0, 0), FRotator(0), spawnPara);
 			floor->reArrange(10, xpos + 450);
-			floor->YRoatation(-20);
-			floor->Zpos(380);
+			floor->YRoatation(20);
+			floor->Zpos(-270);
 			blocks.Push(floor);
 		}
 		xpos += 900;
@@ -401,8 +405,8 @@ void ALevelMngr::CreateLevelBlock() {
 		if (satuM) {
 			Ablock_9* floor = world->SpawnActor<Ablock_9>(satuM, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
 			floor->reArrange(10, xpos + 500);
-			floor->YRoatation(-13);
-			floor->Zpos(110);
+			floor->YRoatation(10);
+			floor->Zpos(-20);
 			blocks.Push(floor);
 		}
 		xpos += 1000;
