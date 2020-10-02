@@ -3,6 +3,8 @@
 
 #include "seaSaw1.h"
 #include "seaSawPlank.h"
+#include "Components/BoxComponent.h"
+#include "../char/C_mainChar.h"
 
 // Sets default values
 AseaSaw1::AseaSaw1()
@@ -12,6 +14,9 @@ AseaSaw1::AseaSaw1()
 
 	bar = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("bar"));
 	RootComponent = bar;
+
+	Camera_Manupulator = CreateDefaultSubobject<UBoxComponent>(TEXT("cameraManupulatorBox"));
+	Camera_Manupulator->SetupAttachment(bar);
 
 	bar->SetWorldScale3D(FVector(40, 0.4, 0.7));
 
@@ -23,10 +28,14 @@ void AseaSaw1::BeginPlay()
 	Super::BeginPlay();
 	FActorSpawnParameters spawnPara;
 	spawnPara.Owner = this;
-	int xpos = bar->GetComponentLocation().X;
+
+	Camera_Manupulator->OnComponentBeginOverlap.AddDynamic(this, &AseaSaw1::OnOverlapBegin);
+
+	int xpos = bar->GetComponentLocation().X - 3750;
 	for (int i = 0; i < 10; i++) {
-		AseaSawPlank* aa = GetWorld()->SpawnActor<AseaSawPlank>(planks, FVector(xpos, 0, 100), FRotator(0), spawnPara);
-		xpos += 300;
+		AseaSawPlank* aa = GetWorld()->SpawnActor<AseaSawPlank>(planks, FVector(xpos, 0, 0), FRotator(0), spawnPara);
+		xpos += 200*2;
+		xpos += 50;
 	}
 	
 }
@@ -38,3 +47,18 @@ void AseaSaw1::Tick(float DeltaTime)
 
 }
 
+void AseaSaw1::OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor,
+	class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	AC_mainChar* mainC = Cast<AC_mainChar>(OtherActor);
+
+	if (mainC) {
+
+		mainC->boom_predicted_length = 1500;
+		mainC->boom_predicted_Rot = FRotator(315, 0, 0);
+		//mainC->camera_predicted_Rot = FRotator(15, 0, 0);
+		Camera_Manupulator->DestroyComponent();
+	}
+
+
+}

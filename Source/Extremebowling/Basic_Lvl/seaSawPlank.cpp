@@ -18,7 +18,7 @@ AseaSawPlank::AseaSawPlank()
 	block2 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("block2"));
 	block2->SetupAttachment(RootComponent);
 
-	plank->SetWorldScale3D(FVector(1,5,0.15));
+	plank->SetWorldScale3D(FVector(3,13,1));
 
 
 }

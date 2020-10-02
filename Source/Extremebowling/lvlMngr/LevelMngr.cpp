@@ -113,7 +113,7 @@ void ALevelMngr::CreateLevelBlock() {
 
 	if (!hasNext) {
 		//wToSelect = (int)FMath::FRandRange(1, 20);
-		wToSelect = 502;
+		wToSelect = 503;
 	}
 	hasNext = false;
 
@@ -283,18 +283,7 @@ void ALevelMngr::CreateLevelBlock() {
 		xpos += 40 * 200;
 	}
 	//400 ens=================================================================================
-	else if (wToSelect == 500) {
-		hasNext = true;
-		wToSelect = 999;
-		int sB = 40;
-		next_Milestone += sB * 200;
-		if (seaSaw1) {
-			AActor* floor = world->SpawnActor<AActor>(seaSaw1, FVector(xpos +
-				((sB * 200) / 2), 0, 0), FRotator(0), spawnPara);
-			blocks.Push(floor);
-		}
-		xpos += 40 * 200;
-	}
+	
 	else if (wToSelect == 501) {
 		hasNext = true;
 		wToSelect = 999;
@@ -356,7 +345,7 @@ void ALevelMngr::CreateLevelBlock() {
 		}
 		xpos += 1000;
 	}
-	//mainWheel
+	//mainWheel // add test "stay here" to not let player drop
 	else if (wToSelect == 150203) {
 		hasNext = true;
 		wToSelect = 150204;
@@ -410,6 +399,19 @@ void ALevelMngr::CreateLevelBlock() {
 			blocks.Push(floor);
 		}
 		xpos += 1000;
+	}
+	//seaSaw1 ----------------------------
+	else if (wToSelect == 503) {
+		hasNext = true;
+		wToSelect = 999;
+		int sB = 40;
+		next_Milestone += sB * 200;
+		if (seaSaw1) {
+			AActor* floor = world->SpawnActor<AActor>(seaSaw1, FVector(xpos +
+				((sB * 200) / 2), 0, -200), FRotator(0), spawnPara);
+			blocks.Push(floor);
+		}
+		xpos += sB * 200;
 	}
 	///--------------------------------------------------------------------
 	else {
