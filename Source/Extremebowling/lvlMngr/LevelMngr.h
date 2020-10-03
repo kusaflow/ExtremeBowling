@@ -61,7 +61,6 @@ public:
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
 		TSubclassOf<class Ablock_9> satuM;
 
-
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
 		TSubclassOf<class AActor> plane;
 
@@ -77,6 +76,10 @@ public:
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
 		TSubclassOf<class Amove_leftRight> moveB1;
 
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+		TSubclassOf<class AActor> plusRot;
+
+	/// all blocks now ------------------------------------------------------------------------------------
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
 		TSubclassOf<class AActor> plusRot;
 
