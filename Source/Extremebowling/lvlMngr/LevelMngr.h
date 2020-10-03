@@ -25,13 +25,13 @@ public:
 	bool start = true, init_block = true, hasNext = false;
 
 	int Sat = 1;
-	bool isCurvedPlatform = true;
+	bool isCurvedPlatform = true; 
 
 
 	int wToSelect = 400;
 	int backUp_wToSelect = 0;
 
-
+	  
 
 	//kusaMesh-------------------------------------------------
 	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
