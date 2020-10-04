@@ -34,54 +34,105 @@ public:
 	  
 
 	//kusaMesh-------------------------------------------------
-	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
-		TSubclassOf<class AActor> L1_Base_Track;
+	//UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+	//	TSubclassOf<class AActor> L1_Base_Track;
 
-	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
-		TSubclassOf<class AActor> L1_B_1;
+	//UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+	//	TSubclassOf<class AActor> L1_B_1;
 
-	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
-		TSubclassOf<class AActor> L1_B_2;
+	//UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+	//	TSubclassOf<class AActor> L1_B_2;
 
-	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
-		TSubclassOf<class AActor> L1_B_3;
+	//UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+	//	TSubclassOf<class AActor> L1_B_3;
 
-	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
-		TSubclassOf<class AActor> L1_B_4;
+	//UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+	//	TSubclassOf<class AActor> L1_B_4;
 
-	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
-		TSubclassOf<class AActor> L1_B_5;
+	//UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+	//	TSubclassOf<class AActor> L1_B_5;
 
-	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
-		TSubclassOf<class AActor> L1_B_6;
-	
-	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
-		TSubclassOf<class AActor> L1_B_7;
+	//UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+	//	TSubclassOf<class AActor> L1_B_6;
+	//
+	//UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+	//	TSubclassOf<class AActor> L1_B_7;
 
-	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
-		TSubclassOf<class Ablock_9> satuM;
+	//UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+	//	TSubclassOf<class Ablock_9> satuM;
 
-	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
-		TSubclassOf<class AActor> plane;
+	//UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+	//	TSubclassOf<class AActor> plane;
 
-	//bowling Section
-	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
-		TSubclassOf<class ARollingBallDown> rollingBall;
+	////bowling Section
+	//UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+	//	TSubclassOf<class ARollingBallDown> rollingBall;
 
-	//SeaSaw 1
-	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
-		TSubclassOf<class AActor> seaSaw1;
+	////SeaSaw 1
+	//UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+	//	TSubclassOf<class AActor> seaSaw1;
 
-	//Movement Blocks
-	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
-		TSubclassOf<class Amove_leftRight> moveB1;
+	////Movement Blocks
+	//UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+	//	TSubclassOf<class Amove_leftRight> moveB1;
 
-	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
-		TSubclassOf<class AActor> plusRot;
+	//UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
+	//	TSubclassOf<class AActor> plusRot;
 
 	/// all blocks now ------------------------------------------------------------------------------------
-	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes")
-		TSubclassOf<class AActor> plusRot;
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes_org")
+		TSubclassOf<class Ablock_9> block9;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes_org")
+		TSubclassOf<class AActor> elevation_curved;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes_org")
+		TSubclassOf<class AActor> elevation_plane;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes_org")
+		TSubclassOf<class AActor> holeInPlace_1_curved;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes_org")
+		TSubclassOf<class AActor> holeInPlace_2_curved;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes_org")
+		TSubclassOf<class AActor> holeInPlace_1_plane;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes_org")
+		TSubclassOf<class AActor> holeInPlace_2_plane;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes_org")
+		TSubclassOf<class Amove_leftRight> move_LR_UD;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes_org")
+		TSubclassOf<class AActor> obstacleCylinder_big_1_curved;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes_org")
+		TSubclassOf<class AActor> obstacleCylinder_big_2_curved;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes_org")
+		TSubclassOf<class AActor> obstacleCylinder_big_1_plane;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes_org")
+		TSubclassOf<class AActor> obstacleCylinder_big_2_plane;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes_org")
+		TSubclassOf<class AActor> obstacleCylinder_small_1_curved;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes_org")
+		TSubclassOf<class AActor> obstacleCylinder_small_2_curved;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes_org")
+		TSubclassOf<class AActor> obstacleCylinder_small_1_plane;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes_org")
+		TSubclassOf<class AActor> obstacleCylinder_small_2_plane;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes_org")
+		TSubclassOf<class AActor> randomSteep_curved;
+
+	UPROPERTY(EditDefaultsOnly, category = "kusa_Meshes_org")
+		TSubclassOf<class AActor> randomSteep_plane;
 
 
 

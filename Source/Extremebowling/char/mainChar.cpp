@@ -26,8 +26,8 @@ AmainChar::AmainChar()
 	cameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	cameraBoom->SetupAttachment(RootComponent);
 	cameraBoom->bDoCollisionTest = false;
-	cameraBoom->TargetArmLength = 300;
-	cameraBoom->SetRelativeRotation(FRotator(-30, 0, 0));
+	cameraBoom->TargetArmLength = 400;
+	cameraBoom->SetRelativeRotation(FRotator(340, 0, 0));
 	cameraBoom->bInheritPitch = false;
 	cameraBoom->bInheritRoll = false;
 	cameraBoom->bInheritYaw = false;
@@ -35,6 +35,7 @@ AmainChar::AmainChar()
 
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(cameraBoom, USpringArmComponent::SocketName);
+	FollowCamera->SetRelativeRotation(FRotator(15, 0, 0));
 
 }
 
@@ -45,6 +46,8 @@ void AmainChar::BeginPlay()
 
 	UkusaGameInstance* gameInst = Cast<UkusaGameInstance>(GetGameInstance());
 	gameInst->SpeedTimer = 0;
+
+	boom_predicted_length = 400;
 	
 }
 
@@ -56,16 +59,25 @@ void AmainChar::Tick(float DeltaTime)
 	UkusaGameInstance* gameInst = Cast<UkusaGameInstance>(GetGameInstance());
 	gameInst->playerPos = RootComponent->GetComponentLocation().X;
 
-	
-
 	if (!brakeOn) {
-		sphere->AddAngularImpulseInDegrees(FVector(0, 3000 * DeltaTime, 0), NAME_None, true);
+		//sphere->AddAngularImpulseInDegrees(FVector(0, 3000 * DeltaTime, 0), NAME_None, true);
+		sphere->AddAngularImpulseInDegrees(FVector(0, 4200 * DeltaTime, 0), NAME_None, true);
 	}
 
 
 	if (gameInst->SpeedTimer <= 500) {
 		gameInst->SpeedTimer += 100 * DeltaTime;
 	}
+
+	///camera Update Interopolated
+	if (cameraBoom->TargetArmLength > boom_predicted_length + 20) {
+		cameraBoom->TargetArmLength -= 1200 * DeltaTime;
+	}
+	else if (cameraBoom->TargetArmLength < boom_predicted_length - 20) {
+		cameraBoom->TargetArmLength += 1200 * DeltaTime;
+	}
+
+	cameraBoom->SetRelativeRotation(boom_predicted_Rot);
 
 }
 
@@ -81,12 +93,24 @@ void AmainChar::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 
 void AmainChar::Movement (float val) {
+	/*
 	if (val == -1) {
 		sphere->AddForce(FVector(0, -2000, 0), NAME_None, true);
 	}
 	else if (val == 1){
 		sphere->AddForce(FVector(0, 2000, 0), NAME_None, true);
+	}*/
+
+	if (val == -1) {
+		sphere->AddAngularImpulseInDegrees(FVector(5000 * GetWorld()->GetDeltaSeconds(), 0, 0), NAME_None, true);
+		//sphere->AddForce(FVector(0, -2000, 0), NAME_None, true);
 	}
+	else if (val == 1) {
+		sphere->AddAngularImpulseInDegrees(FVector(-5000 * GetWorld()->GetDeltaSeconds(), 0, 0), NAME_None, true);
+		//sphere->AddForce(FVector(0, 2000, 0), NAME_None, true);
+	}
+
+
 }
 
 
@@ -95,17 +119,13 @@ void AmainChar::brake_F(float val) {
 	brakeOn = false;
 	if (val == 1) {
 		brakeOn = true;
-		FVector currV = GetVelocity();
+		FVector currV = sphere->GetComponentVelocity();
 
-		currV.X *= -2;
-		currV.Y *= -2;
-
-		if (currV.Z <= 50) {
-			return;
-		}
+		currV.X /= 1.2f;
 		
 		//sphere->AddAngularImpulseInDegrees(currV);
-		sphere->AddForce(currV, NAME_None, true);
+		//sphere->AddForce(currV, NAME_None, true);
+		sphere->SetPhysicsLinearVelocity(currV);
 	}
 }
 

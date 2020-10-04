@@ -112,8 +112,8 @@ void ALevelMngr::CreateLevelBlock() {
 
 
 	if (!hasNext) {
-		//wToSelect = (int)FMath::FRandRange(1, 20);
-		wToSelect = 503;
+		wToSelect = (int)FMath::FRandRange(1, 15);
+		//wToSelect = 503;
 	}
 	hasNext = false;
 
@@ -136,9 +136,375 @@ void ALevelMngr::CreateLevelBlock() {
 
 	}
 
-	//saturation
-	//if ()
+	//re Evaluate_---------------------
+	if (wToSelect == 1 || wToSelect == 2 || wToSelect == 3 ||
+		wToSelect == 5 || wToSelect == 6 || wToSelect == 7 ||
+		wToSelect == 8 || wToSelect == 9) {
+		if ((int)(FMath::FRandRange(1, 71)) % 10 == 0) {
+			//changeTheCurve = true;
+			isCurvedPlatform = !isCurvedPlatform;
+			backUp_wToSelect = wToSelect;
+			if (isCurvedPlatform) {
+				wToSelect = 998;
+				Sat = 10;
+			}
+			else {
+				wToSelect = 999;
+				Sat = 1;
+			}
+		}
+	}
 
+
+
+	//saturation is 999(1 To 10) && 998(10 to 1).
+	if (wToSelect == 999) {
+		hasNext = true;
+		wToSelect = 999;
+		if (Sat >= 10) {
+			//Sat = 10;
+			wToSelect = backUp_wToSelect;
+		}
+
+		next_Milestone += 1000;
+		if (block9) {
+			Ablock_9* floor = world->SpawnActor<Ablock_9>(block9, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+			floor->reArrange(Sat++, xpos + 500);
+			blocks.Push(floor);
+		}
+		xpos += 1000;
+	}
+	else if (wToSelect == 998) {
+		hasNext = true;
+		wToSelect = 998;
+		if (Sat <= 0) {
+			wToSelect = backUp_wToSelect;
+		}
+
+		next_Milestone += 1000;
+		if (block9) {
+			Ablock_9* floor = world->SpawnActor<Ablock_9>(block9, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+			floor->reArrange(Sat--, xpos + 500);
+			blocks.Push(floor);
+		}
+		xpos += 1000;
+	}
+
+	//whole elevated 
+
+	if (wToSelect == 1) {
+		hasNext = true;
+		wToSelect = -1;
+
+		if (isCurvedPlatform) {
+			if (elevation_curved) {
+				AActor* floor = world->SpawnActor<AActor>(elevation_curved, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+				blocks.Push(floor);
+			}
+		}else{
+			if (elevation_plane) {
+				AActor* floor = world->SpawnActor<AActor>(elevation_plane, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+				blocks.Push(floor);
+			}
+		}
+
+		xpos += 1000;
+		next_Milestone += 1000;
+	}
+
+	//holes in place at2 and 3
+	else if (wToSelect == 2) {
+
+		if (isCurvedPlatform) {
+			if (holeInPlace_1_curved) {
+				AActor* floor = world->SpawnActor<AActor>(holeInPlace_1_curved, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+				blocks.Push(floor);
+			}
+		}
+		else {
+			if (holeInPlace_1_plane) {
+				AActor* floor = world->SpawnActor<AActor>(holeInPlace_1_plane, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+				blocks.Push(floor);
+			}
+		}
+
+		if (((int)(FMath::FRandRange(0, 16))) % 4 == 0) {
+			hasNext = true;
+			if (((int)(FMath::FRandRange(0, 16))) % 4 == 0) {
+				wToSelect = -1;
+			}
+			else {
+				if (((int)(FMath::FRandRange(0, 16))) % 2 == 0) {
+					wToSelect = 2;
+				}
+				else {
+					wToSelect = 3;
+				}
+			}
+		}
+
+
+		xpos += 1000;
+		next_Milestone += 1000;
+	}
+	else if (wToSelect == 3) {
+
+		if (isCurvedPlatform) {
+			if (holeInPlace_2_curved) {
+				AActor* floor = world->SpawnActor<AActor>(holeInPlace_2_curved, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+				blocks.Push(floor);
+			}
+		}
+		else {
+			if (holeInPlace_2_plane) {
+				AActor* floor = world->SpawnActor<AActor>(holeInPlace_2_plane, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+				blocks.Push(floor);
+			}
+		}
+
+		if (((int)(FMath::FRandRange(0, 16))) % 4 == 0) {
+			hasNext = true;
+			if (((int)(FMath::FRandRange(0, 16))) % 4 == 0) {
+				wToSelect = -1;
+			}
+			else {
+				if (((int)(FMath::FRandRange(0, 16))) % 2 == 0) {
+					wToSelect = 2;
+				}
+				else {
+					wToSelect = 3;
+				}
+			}
+		}
+
+
+		xpos += 1000;
+		next_Milestone += 1000;
+	}
+	//move Left Right
+	else if (wToSelect == 4) {
+		int len = ((int)(FMath::FRandRange(3, 11)));
+		int sB = 5 * len;
+
+		int Vsize = ((int)(FMath::FRandRange(1,20)))%2 ? true : false;
+		bool inY = ((int)(FMath::FRandRange(1, 20))) % 2 ? true : false;
+		bool RandomInY = ((int)(FMath::FRandRange(1, 20))) % 2 ? true : false;
+		bool RandomInZ = ((int)(FMath::FRandRange(1, 20))) % 2 ? true : false;
+
+
+		if (move_LR_UD) {
+			for (int i = 0; i < len; i++) {
+				Amove_leftRight* floor = world->SpawnActor<Amove_leftRight>(move_LR_UD, FVector(xpos +
+					((5 * 200) / 2), 0, 0), FRotator(0), spawnPara);
+				floor->setUp(false, false, false, false);
+				blocks.Push(floor);
+				xpos += (5 * 200);
+			}
+		}
+
+		next_Milestone += sB * 200;
+	}
+	//obstacles 
+	// big at 5 6
+	//small at 7 8
+	else if (wToSelect == 5) {
+		
+		if (isCurvedPlatform) {
+			if (obstacleCylinder_big_1_curved) {
+				AActor* floor = world->SpawnActor<AActor>(obstacleCylinder_big_1_curved, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+				blocks.Push(floor);
+			}
+		}
+		else {
+			if (obstacleCylinder_big_1_plane) {
+				AActor* floor = world->SpawnActor<AActor>(obstacleCylinder_big_1_plane, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+				blocks.Push(floor);
+			}
+		}
+
+		if (((int)(FMath::FRandRange(0, 16))) % 3 == 0) {
+			hasNext = true;
+			if (((int)(FMath::FRandRange(0, 16))) % 2 == 0) {
+				//stay Big
+				if (((int)(FMath::FRandRange(0, 16))) % 2 == 0) {
+					wToSelect = 5;
+				}
+				else {
+					wToSelect = 6;
+				}
+			}
+			else {
+				if (((int)(FMath::FRandRange(0, 16))) % 2 == 0) {
+					wToSelect = 7;
+				}
+				else {
+					wToSelect = 8;
+				}
+			}
+		}
+
+		next_Milestone += 1000;
+		xpos += 1000;
+	}
+	else if (wToSelect == 6) {
+
+		if (isCurvedPlatform) {
+			if (obstacleCylinder_big_2_curved) {
+				AActor* floor = world->SpawnActor<AActor>(obstacleCylinder_big_2_curved, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+				blocks.Push(floor);
+			}
+		}
+		else {
+			if (obstacleCylinder_big_2_plane) {
+				AActor* floor = world->SpawnActor<AActor>(obstacleCylinder_big_2_plane, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+				blocks.Push(floor);
+			}
+		}
+
+		if (((int)(FMath::FRandRange(0, 16))) % 3 == 0) {
+			hasNext = true;
+			if (((int)(FMath::FRandRange(0, 16))) % 2 == 0) {
+				//stay Big
+				if (((int)(FMath::FRandRange(0, 16))) % 2 == 0) {
+					wToSelect = 5;
+				}
+				else {
+					wToSelect = 6;
+				}
+			}
+			else {
+				if (((int)(FMath::FRandRange(0, 16))) % 2 == 0) {
+					wToSelect = 7;
+				}
+				else {
+					wToSelect = 8;
+				}
+			}
+		}
+
+		next_Milestone += 1000;
+		xpos += 1000;
+	}
+	// small one
+	else if (wToSelect == 7) {
+
+		if (isCurvedPlatform) {
+			if (obstacleCylinder_small_1_curved) {
+				AActor* floor = world->SpawnActor<AActor>(obstacleCylinder_small_1_curved, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+				blocks.Push(floor);
+			}
+		}
+		else {
+			if (obstacleCylinder_small_1_plane) {
+				AActor* floor = world->SpawnActor<AActor>(obstacleCylinder_small_1_plane, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+				blocks.Push(floor);
+			}
+		}
+
+		if (((int)(FMath::FRandRange(0, 16))) % 3 == 0) {
+			hasNext = true;
+			if (((int)(FMath::FRandRange(0, 16))) % 2 == 0) {
+				//stay Big
+				if (((int)(FMath::FRandRange(0, 16))) % 2 == 0) {
+					wToSelect = 5;
+				}
+				else {
+					wToSelect = 6;
+				}
+			}
+			else {
+				if (((int)(FMath::FRandRange(0, 16))) % 2 == 0) {
+					wToSelect = 7;
+				}
+				else {
+					wToSelect = 8;
+				}
+			}
+		}
+
+		next_Milestone += 1000;
+		xpos += 1000;
+	}
+	else if (wToSelect == 8) {
+
+		if (isCurvedPlatform) {
+			if (obstacleCylinder_small_2_curved) {
+				AActor* floor = world->SpawnActor<AActor>(obstacleCylinder_small_2_curved, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+				blocks.Push(floor);
+			}
+		}
+		else {
+			if (obstacleCylinder_small_2_plane) {
+				AActor* floor = world->SpawnActor<AActor>(obstacleCylinder_small_2_plane, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+				blocks.Push(floor);
+			}
+		}
+
+		if (((int)(FMath::FRandRange(0, 16))) % 3 == 0) {
+			hasNext = true;
+			if (((int)(FMath::FRandRange(0, 16))) % 2 == 0) {
+				//stay Big
+				if (((int)(FMath::FRandRange(0, 16))) % 2 == 0) {
+					wToSelect = 5;
+				}
+				else {
+					wToSelect = 6;
+				}
+			}
+			else {
+				if (((int)(FMath::FRandRange(0, 16))) % 2 == 0) {
+					wToSelect = 7;
+				}
+				else {
+					wToSelect = 8;
+				}
+			}
+		}
+
+		next_Milestone += 1000;
+		xpos += 1000;
+	}
+	//random steap
+	else if (wToSelect == 9) {
+		if (isCurvedPlatform) {
+			if (randomSteep_curved) {
+				AActor* floor = world->SpawnActor<AActor>(randomSteep_curved, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+				blocks.Push(floor);
+			}
+		}
+		else {
+			if (randomSteep_plane) {
+				AActor* floor = world->SpawnActor<AActor>(randomSteep_plane, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+				blocks.Push(floor);
+			}
+		}
+
+		hasNext = true;
+		wToSelect = -1;
+	
+
+	}
+
+	
+	//-----plane --------------
+	else {
+		next_Milestone += 1000;
+		if (block9) {
+			Ablock_9* floor = world->SpawnActor<Ablock_9>(block9, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+			floor->reArrange(isCurvedPlatform ? -1 : 10, xpos + 500);
+			blocks.Push(floor);
+		}
+		xpos += 1000;
+
+		if (((int)(FMath::FRandRange(0,15))) % 3 == 0) {
+			hasNext = true;
+			wToSelect = -1;
+		}
+	}
+
+
+	//if ()
+	/*
 	if (wToSelect == 1) {
 		next_Milestone += 1000;
 		if (L1_B_1) {
@@ -423,6 +789,8 @@ void ALevelMngr::CreateLevelBlock() {
 		}
 		xpos += 1000;
 	}
+
+	*/
 
 
 	if (init_block)

@@ -4,6 +4,7 @@
 #include "move_leftRight.h"
 #include "Components/BoxComponent.h"
 #include "../char/C_mainChar.h"
+#include "../char/mainChar.h"
 
 // Sets default values
 Amove_leftRight::Amove_leftRight()
@@ -78,7 +79,7 @@ void Amove_leftRight :: setUp(bool Vsize, bool isInY, bool Rypos, bool Rzpos) {
 void Amove_leftRight::OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor,
 	class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	AC_mainChar* mainC = Cast<AC_mainChar>(OtherActor);
+	AmainChar* mainC = Cast<AmainChar>(OtherActor);
 
 	if (mainC) {
 

@@ -4,6 +4,7 @@
 #include "plus_Spinner.h"
 #include "Components/BoxComponent.h"
 #include "../char/C_mainChar.h"
+#include "../char/mainChar.h"
 
 // Sets default values
 Aplus_Spinner::Aplus_Spinner()
@@ -42,7 +43,7 @@ void Aplus_Spinner::Tick(float DeltaTime)
 void Aplus_Spinner::OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor,
 	class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	AC_mainChar* mainC = Cast<AC_mainChar>(OtherActor);
+	AmainChar* mainC = Cast<AmainChar>(OtherActor);
 
 	if (mainC) {
 

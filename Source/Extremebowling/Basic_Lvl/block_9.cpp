@@ -4,6 +4,7 @@
 #include "block_9.h"
 #include "Components/BoxComponent.h"
 #include "../char/C_mainChar.h"
+#include "../char/mainChar.h"
 
 // Sets default values
 Ablock_9::Ablock_9()
@@ -295,7 +296,6 @@ void Ablock_9::reArrange(int trans, float Xpos) {
 		mesh9->SetRelativeLocation(FVector(Xpos, 2377.536865, 142.187057));
 		mesh9->SetRelativeRotation(FRotator(0, 0, -6));
 	}
-		
 	else if (trans == 10) {
 		
 
@@ -324,7 +324,32 @@ void Ablock_9::reArrange(int trans, float Xpos) {
 		mesh9->SetRelativeRotation(FRotator(0, 0, 0));
 	}
 
-	mesh1->AddRelativeLocation(FVector(0, 0, -20));
+	else if (trans == -1) {
+		mesh2->SetRelativeLocation(FVector(Xpos, -587.844421, 68.936539));
+		mesh2->SetRelativeRotation(FRotator(0, 0, 10));
+
+		mesh3->SetRelativeLocation(FVector(Xpos, -1152.950195, 242.871063));
+		mesh3->SetRelativeRotation(FRotator(0, 0, 25));
+
+		mesh4->SetRelativeLocation(FVector(Xpos, -1646.430664, 563.894836));
+		mesh4->SetRelativeRotation(FRotator(0, 0, 40));
+
+		mesh5->SetRelativeLocation(FVector(Xpos, -2023.669922, 1035.413086));
+		mesh5->SetRelativeRotation(FRotator(0, 0, 60));
+		///================================================================================================
+		mesh6->SetRelativeLocation(FVector(Xpos, 587.844421, 68.936539));
+		mesh6->SetRelativeRotation(FRotator(0, 0, -10));
+
+		mesh7->SetRelativeLocation(FVector(Xpos, 1152.950195, 242.871063));
+		mesh7->SetRelativeRotation(FRotator(0, 0, -25));
+
+		mesh8->SetRelativeLocation(FVector(Xpos, 1646.430664, 563.894836));
+		mesh8->SetRelativeRotation(FRotator(0, 0, -40));
+
+		mesh9->SetRelativeLocation(FVector(Xpos, 2023.669922, 1035.413086));
+		mesh9->SetRelativeRotation(FRotator(0, 0, -60));
+	}
+	/*mesh1->AddRelativeLocation(FVector(0, 0, -20));
 	mesh2->AddRelativeLocation(FVector(0, 0, -20));
 	mesh3->AddRelativeLocation(FVector(0, 0, -20));
 	mesh4->AddRelativeLocation(FVector(0, 0, -20));
@@ -332,7 +357,7 @@ void Ablock_9::reArrange(int trans, float Xpos) {
 	mesh6->AddRelativeLocation(FVector(0, 0, -20));
 	mesh7->AddRelativeLocation(FVector(0, 0, -20));
 	mesh8->AddRelativeLocation(FVector(0, 0, -20));
-	mesh9->AddRelativeLocation(FVector(0, 0, -20));
+	mesh9->AddRelativeLocation(FVector(0, 0, -20));*/
 
 
 }
@@ -341,7 +366,7 @@ void Ablock_9::reArrange(int trans, float Xpos) {
 void Ablock_9::OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor,
 	class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) 
 {
-	AC_mainChar* mainC = Cast<AC_mainChar>(OtherActor);
+	AmainChar* mainC = Cast<AmainChar>(OtherActor);
 
 	if (mainC) {
 
