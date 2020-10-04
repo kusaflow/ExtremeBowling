@@ -112,8 +112,8 @@ void ALevelMngr::CreateLevelBlock() {
 
 
 	if (!hasNext) {
-		wToSelect = (int)FMath::FRandRange(1, 15);
-		//wToSelect = 503;
+		//wToSelect = (int)FMath::FRandRange(1, 15);
+		wToSelect = 503;
 	}
 	hasNext = false;
 
@@ -192,7 +192,7 @@ void ALevelMngr::CreateLevelBlock() {
 
 	//whole elevated 
 
-	if (wToSelect == 1) {
+	else if (wToSelect == 1) {
 		hasNext = true;
 		wToSelect = -1;
 

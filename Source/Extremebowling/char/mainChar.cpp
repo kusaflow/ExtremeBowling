@@ -121,11 +121,15 @@ void AmainChar::brake_F(float val) {
 		brakeOn = true;
 		FVector currV = sphere->GetComponentVelocity();
 
-		currV.X /= 1.2f;
-		
+		//currV.X /= 2.0f;
+		//currV.X = -1 * currV.X;
+		if (currV.X >=0)
+			sphere->AddAngularImpulseInDegrees(FVector(0, -9500 *GetWorld()->GetDeltaSeconds(), 0), NAME_None, true);
+		if (currV.X < 0)
+			sphere->SetPhysicsLinearVelocity(FVector(0, currV.Y, currV.Z));
 		//sphere->AddAngularImpulseInDegrees(currV);
 		//sphere->AddForce(currV, NAME_None, true);
-		sphere->SetPhysicsLinearVelocity(currV);
+		//sphere->SetPhysicsLinearVelocity(currV);
 	}
 }
 
