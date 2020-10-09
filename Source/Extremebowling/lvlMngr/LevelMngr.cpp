@@ -112,8 +112,8 @@ void ALevelMngr::CreateLevelBlock() {
 
 
 	if (!hasNext) {
-		//wToSelect = (int)FMath::FRandRange(1, 15);
-		wToSelect = 503;
+		wToSelect = (int)FMath::FRandRange(1, 15);
+		//wToSelect = 503;
 	}
 	hasNext = false;
 
@@ -478,6 +478,8 @@ void ALevelMngr::CreateLevelBlock() {
 				blocks.Push(floor);
 			}
 		}
+		next_Milestone += 1000;
+		xpos += 1000;
 
 		hasNext = true;
 		wToSelect = -1;
