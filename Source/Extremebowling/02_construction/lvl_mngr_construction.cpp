@@ -2,6 +2,7 @@
 
 
 #include "lvl_mngr_construction.h"
+#include "../essential/kusaGameInstance.h"
 
 // Sets default values
 Alvl_mngr_construction::Alvl_mngr_construction()
@@ -22,6 +23,104 @@ void Alvl_mngr_construction::BeginPlay()
 void Alvl_mngr_construction::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	UkusaGameInstance* gameInst = Cast<UkusaGameInstance>(GetGameInstance());
+	int playerPosX = gameInst->playerPos;
+
+
+
+	if (playerPosX >= next_Milestone) {
+		UpdateLevel();
+	}
+
+}
+
+void Alvl_mngr_construction::initBlocks() {
+
+	init_block = true;
+	for (int i = 0; i < 20; i++) {
+		CreateLevelBlock();
+		if (i == 9) {
+			next_Milestone = xpos;
+
+		}if (i == 5) {
+			start = false;
+		}
+
+	}
+
+	init_block = false;
+
+}
+
+void Alvl_mngr_construction::popBlock() {
+
+	if (LB_array.IsEmpty()) {
+		return;
+	}
+	TArray<AActor*> rem;
+	LB_array.Peek(rem);
+	LB_array.Pop();
+	//UE_LOG(LogTemp, Warning, TEXT("%d"), rem.Num());
+	if (rem.Num() >= 0) {
+		while (rem.Num() != 0) {
+			AActor* toDest = rem.Pop();
+			if (toDest) {
+				toDest->Destroy();
+			}
+		}
+	}
+
+
+}
+
+void Alvl_mngr_construction::UpdateLevel() {
+
+	//next_Milestone += 1000;
+
+	CreateLevelBlock();
+	popBlock();
+
+}
+
+
+void Alvl_mngr_construction :: CreateLevelBlock() {
+	FActorSpawnParameters spawnPara;
+	spawnPara.Owner = this;
+
+	TArray<AActor*> blocks;
+
+	UWorld* world = GetWorld();
+
+	int y_sz = 10;
+
+	if (!hasNext) {
+		wToSelect = (int)FMath::FRandRange(1, 15);
+		//wToSelect = 503;
+	}
+	hasNext = false;
+
+	if (start)
+		wToSelect = -10;
+
+
+	//---------temp
+	next_Milestone += 1000;
+	if (block) {
+		AActor* floor = world->SpawnActor<AActor>(block, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
+		floor->SetActorScale3D(FVector(5,5,1));
+		blocks.Push(floor);
+	}
+	xpos += 1000;
+
+
+
+
+
+
+	if (init_block)
+		next_Milestone -= 1000;
+
+	LB_array.Enqueue(blocks);
 
 }
 
