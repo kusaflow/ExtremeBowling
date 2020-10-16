@@ -16,6 +16,7 @@ Alvl_mngr_construction::Alvl_mngr_construction()
 void Alvl_mngr_construction::BeginPlay()
 {
 	Super::BeginPlay();
+	initBlocks();
 	
 }
 
@@ -104,13 +105,12 @@ void Alvl_mngr_construction :: CreateLevelBlock() {
 
 
 	//---------temp
-	next_Milestone += 1000;
+	next_Milestone += 2000;
 	if (block) {
 		AActor* floor = world->SpawnActor<AActor>(block, FVector(xpos + 500, 0, 0), FRotator(0), spawnPara);
-		floor->SetActorScale3D(FVector(5,5,1));
 		blocks.Push(floor);
 	}
-	xpos += 1000;
+	xpos += 2000;
 
 
 
