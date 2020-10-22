@@ -71,7 +71,6 @@ void Alvl_mngr_construction::popBlock() {
 		}
 	}
 
-
 }
 
 void Alvl_mngr_construction::UpdateLevel() {
