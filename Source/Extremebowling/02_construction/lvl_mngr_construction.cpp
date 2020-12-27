@@ -102,6 +102,11 @@ void Alvl_mngr_construction :: CreateLevelBlock() {
 	if (start)
 		wToSelect = -10;
 
+	//1 to   is for random blocks in plane surface
+	if (wToSelect == 1) {
+		//world->Spawn
+	}
+
 
 	//---------temp
 	next_Milestone += 2000;
